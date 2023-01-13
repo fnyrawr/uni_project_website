@@ -7,7 +7,7 @@
 - [ ] Implement basic functionalities for About / Download / Blog / Leaderboard sections `@Florian`
 - [ ] Implement Blog entry functionalities `@Florian`
 - [ ] Implement Leaderboard functionalities `@Florian (Page)` `@Eric (Unity)`
-- [ ] Fill page with contents `@Zainab` `@Florian`
+- [ ] Fill page with contents `@Florian (Design and Page)` `@Zainab (Text)`
 - [ ] Test website functionalities `@everyone`
 
 ##### Needed commands to get page running
