@@ -7,8 +7,16 @@
 - [ ] Implement basic functionalities for About / Download / Blog / Leaderboard sections `@Florian`
 - [ ] Implement Blog entry functionalities `@Florian`
 - [ ] Implement Leaderboard functionalities `@Florian (Page)` `@Eric (Unity)`
-- [ ] Fill page with contents `@Zainab` `@Florian`
+- [ ] Fill page with contents `@Florian (Design and Page)` `@Zainab (Text)`
 - [ ] Test website functionalities `@everyone`
 
 ##### Needed commands to get page running
-- pip install Pillow
+- pip install django
+- pip install Pillow (needed for profile pictures)
+- python -m venv ./venv (creating virtual environment)
+- venv\Scripts\activate
+- python manage.py runserver
+
+###### after changes you may run
+- python manage.py makemigrations
+- python manage.py migrate
