@@ -5,4 +5,5 @@ $(document).ready(function(){
     $('.modal').modal();
     $(".dropdown-trigger").dropdown();
     $('.parallax').parallax();
+    $('.carousel').carousel();
 });
