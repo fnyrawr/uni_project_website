@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Base title{% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+    <h1>Hello Capybaras</h1>
+    Home Block
+    {% if user.is_authenticated %}
+        <p>Hi {{ user.username }}!</p>
+        <a href="{% url 'logout' %}">logout</a>
+    {% else %}
+        <p>You are not logged in</p>
+        <a href="{% url 'login' %}">login</a>
+    {% endif %}
+{% endblock %}
+</body>
+
+<footer>
+    {% block footer %}Footer block{% endblock %}
+</footer>
+</html>
