@@ -1,19 +1,48 @@
 {% extends "base.html" %}
 
-{% block title %}Hello Capybaras{% endblock %}
+{% block title %}CapybaraStudios - Home{% endblock %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/theming.css' %}">
+{% endblock %}
+{% block scripts %}
+    <script type="text/javascript" src="{% static 'js/loadingMaterialize.js' %}"></script>
+{% endblock %}
 
 {% block content %}
-    <h1>Hello Capybaras</h1>
-    Home Block
     {% if user.is_authenticated %}
-        <p>Hi {{ user.username }}!</p>
-        <a href="{% url 'logout' %}">logout</a>
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="card orange lighten-3 z-depth-3">
+                        <div class="card-content">
+                            <p>Welcome back, {{ user.username }}.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     {% else %}
-        <p>You are not logged in</p>
-        <a href="{% url 'login' %}">login</a>
+        {% block not_logged_in_content %}
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card orange lighten-3 z-depth-3">
+                            <div class="card-content">
+                                <p>Welcome to the CapybaraStudios Website.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
     {% endif %}
 {% endblock %}
 
-{% block footer %}
-    Created by CapybaraStudios, 2022-2023<br><br>
+{% block login_widget %}
+    {% if user.is_authenticated %}
+        <li><a class="waves-effect waves-light" href="{% url 'logout' %}"><i class="material-icons left">logout</i> Logout</a></li>
+    {% else %}
+      <li><a class="waves-effect waves-light" href="{% url 'login' %}"><i class="material-icons left">login</i> Login</a></li>
+    {% endif %}
 {% endblock %}

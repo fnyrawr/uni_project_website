@@ -1,0 +1,50 @@
+body {
+  background-color: black
+}
+
+input {
+  border-bottom: #000000 !important;
+  box-shadow: 0 1px 0 0 #000000 !important;
+}
+
+input:focus {
+  border-bottom: 1px solid #FF9800 !important;
+  box-shadow: 0 1px 0 0 #FF9800 !important;
+}
+
+.input-field .prefix {
+  color: #000000 !important;
+}
+
+.input-field .prefix.active {
+  color: #FF9800 !important;
+}
+
+textarea:focus {
+  border-bottom: 1px solid #FF9800 !important;
+  box-shadow: 0 1px 0 0 #FF9800 !important;
+}
+
+label.active {
+  color: #FF9800 !important;
+}
+
+.dropdown-content li>span {
+  color: #FF9800  !important;
+}
+
+.dropdown-content li>a {
+  color: #E65100 !important;
+}
+
+.select-content li>span {
+  color: #E65100 !important;
+}
+
+.select-content li>a {
+  color: #E65100 !important;
+}
+
+.navbar-material .nav-wrapper .brand-logo img {
+    height: 64px;
+}

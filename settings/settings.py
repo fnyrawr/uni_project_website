@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Useradmin.apps.UseradminConfig',
+    'User.apps.UseradminConfig',
 ]
 
 MIDDLEWARE = [
@@ -119,6 +119,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -126,3 +130,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+AUTH_USER_MODEL = 'User.CustomUser'
+
+# Email Config
+EMAIL_FROM_USER = 'kattie.wolf60@ethereal.email'
+EMAIL_HOST = 'smtp.ethereal.email'
+EMAIL_HOST_USER = 'kattie.wolf60@ethereal.email'
+EMAIL_HOST_PASSWORD = 'Y3tJe8a8RB8ezzXTfh'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
