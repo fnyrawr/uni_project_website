@@ -11,4 +11,12 @@
 - [ ] Test website functionalities `@everyone`
 
 ##### Needed commands to get page running
-- pip install Pillow
+- pip install django
+- pip install Pillow (needed for profile pictures)
+- python -m venv ./venv (creating virtual environment)
+- venv\Scripts\activate
+- python manage.py runserver
+
+###### after changes you may run
+- python manage.py makemigrations
+- python manage.py migrate
