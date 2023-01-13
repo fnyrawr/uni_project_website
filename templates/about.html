@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}CapybaraStudios - About{% endblock %}
+{% load static %}
+
+{% block content %}
+    <div class="section black">
+        <div class="row container">
+            <h2 class="header white-text">About our Game</h2>
+            <p class="grey-text text-lighten-1">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        </div>
+    </div>
+    <div class="parallax-container">
+        <div class="parallax"><img src="{% static '/images/space.png' %}"></div>
+    </div>
+    <div class="section black">
+        <div class="row container">
+            <h2 class="header white-text">About us</h2>
+            <p class="grey-text text-lighten-1">We are a team of 7 students currently being in 5th semester of Media IT studies at BHT Berlin.</p>
+        </div>
+    </div>
+    <div class="parallax-container">
+        <div class="parallax"><img src="{% static '/images/woods.png' %}"></div>
+    </div>
+    <div class="section black">
+        <div class="row container">
+            <h2 class="header white-text">Try it out for free</h2>
+            <p class="grey-text text-lighten-1">Head over to the download section to try out our game.</p>
+        </div>
+    </div>
+{% endblock %}

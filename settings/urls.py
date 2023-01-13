@@ -23,7 +23,10 @@ urlpatterns = [
     path("users/", include("User.urls")),
     path("users/", include("django.contrib.auth.urls")),
     path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name='home.html'), name='home'),
+    path('', TemplateView.as_view(template_name='about.html'), name='about'),
+    path('about', TemplateView.as_view(template_name='about.html'), name='about'),
+    path('home', TemplateView.as_view(template_name='about.html'), name='home'),
+    path('downloads', TemplateView.as_view(template_name='downloads.html'), name='downloads'),
 ]
 
 if settings.DEBUG:

@@ -29,12 +29,16 @@ label.active {
   color: #FB8C00 !important;
 }
 
+.dropdown-content {
+  background-color: #FF9800  !important;
+}
+
 .dropdown-content li>span {
   color: #FB8C00  !important;
 }
 
 .dropdown-content li>a {
-  color: #FB8C00 !important;
+  color: #FFFFFF !important;
 }
 
 .select-content li>span {

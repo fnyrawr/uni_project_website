@@ -15,29 +15,43 @@
   <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
 
     {% load static %}
-    {% block css %}{% endblock %}
-    {% block scripts %}{% endblock %}
+    {% block css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/theming.css' %}">
+    {% endblock %}
+    {% block scripts %}
+        <script type="text/javascript" src="{% static 'js/loadingMaterialize.js' %}"></script>
+    {% endblock %}
 </head>
 <body>
     <main>
         {% block navbar %}
+            <!-- Dropdown Structure -->
+            <ul id="user-widget" class="dropdown-content">
+                <li><a class="waves-effect waves-light"><i class="material-icons left">edit</i>Edit Profile</a></li>
+                <li><a class="waves-effect waves-light" href="{% url 'userlist' %}"><i class="material-icons left">group</i>View Users</a></li>
+                <li><a class="waves-effect waves-light"><i class="material-icons left">chat_bubble</i>View Blogposts</a></li>
+                <li class="divider"></li>
+                <li><a class="waves-effect waves-light" href="{% url 'logout' %}"><i class="material-icons left">logout</i> Logout</a></li>
+            </ul>
             <nav>
                 <div class="nav-wrapper orange">
                     <ul id="nav-categories" class="left">
                         <li><img src="{% static '/images/logo.png' %}" alt="Logo" height="64px"></li>
-                        <li><a>About</a></li>
-                        <li><a>Downloads</a></li>
-                        <li><a>Blog</a></li>
-                        <li><a>Leaderboard</a></li>
+                        <li><a class="waves-effect waves-light" href="{% url 'about' %}">About</a></li>
+                        <li><a class="waves-effect waves-light" href="{% url 'downloads' %}">Downloads</a></li>
+                        <li><a class="waves-effect waves-light">Blog</a></li>
+                        <li><a class="waves-effect waves-light">Leaderboard</a></li>
                     </ul>
                     <ul id="login" class="right">
-                        {% block login_widget %}
-                        {% endblock %}
+                        {% if user.is_authenticated %}
+                            <li><a class="waves-effect waves-light dropdown-trigger" data-target="user-widget"><i class="material-icons left">person</i>{{ user.username }}<i class="material-icons right">arrow_drop_down</i></a></li>
+                        {% else %}
+                            <li><a class="waves-effect waves-light" href="{% url 'login' %}"><i class="material-icons left">login</i> Login</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </nav>
         {% endblock %}
-        {% block sidenav %}{% endblock %}
         {% block content %}{% endblock %}
     </main>
 

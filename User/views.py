@@ -30,7 +30,7 @@ class EmailThread(threading.Thread):
 def send_email(user, request):
     current_site = get_current_site(request)
     email_subject = 'Email verification'
-    email_body = render_to_string('activation-email.html', {
+    email_body = render_to_string('registration/activation-email.html', {
         'user': user,
         'domain': current_site,
         'uid': urlsafe_base64_encode(force_bytes(user.id)),
@@ -59,7 +59,7 @@ def verify_email(request, uidb64, token):
 
         return redirect("login")
 
-    return render(request, 'activation-failed.html', {"user": user})
+    return render(request, 'registration/activation-failed.html', {"user": user})
 
 
 class CustomSignUpView(generic.CreateView):
@@ -82,11 +82,10 @@ class CustomLoginView(LoginView):
     def form_valid(self, form):
         """Security check complete. Log the user in. PERFORM CUSTOM CODE."""
         auth_login(self.request, form.get_user())
-        # custom
         return HttpResponseRedirect(self.get_success_url())
 
 
-class MyUserListView(generic.ListView):
+class UserListView(generic.ListView):
     model = CustomUser
     context_object_name = 'all_users'
-    template_name = 'customuser-list.html'
+    template_name = 'userlist.html'

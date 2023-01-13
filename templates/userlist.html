@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Users list{% endblock %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+    {% if user.is_authorized %}
+        <h3>Users list</h3>
+        <div class="row">
+            {% for myuser in all_users %}
+                <div class="col s3 m4">
+                    <div class="card orange lighten-3 z-depth-3">
+                        <div class="card-image">
+                            {% if myuser.profile_picture %}
+                                <img src="{{ myuser.profile_picture.url }}">
+                            {% else %}
+                                <div class="orange darken-1">
+                                    <img src="{% static '/images/Capybara.png' %}">
+                                </div>
+                            {% endif %}
+                            <span class="card-title">{{ myuser }}</span>
+                        </div>
+                            <div class="card-content">
+                                <p><b>First name:</b> {{ myuser.first_name }}</p>
+                                <p><b>Last name:</b> {{ myuser.last_name }}</p>
+                                <p><b>E-Mail:</b> {{ myuser.email }}</p>
+                                <p><b>Role:</b> {{myuser.get_role_display}}</p>
+                                <p><b>Joined:</b> {{myuser.date_joined|date:"d.m.Y H:i"}}</p>
+                                <p><b>Last Login:</b> {{myuser.last_login|date:"d.m.Y H:i"}}</p>
+                            </div>
+                        </div>
+                    </div>
+            {% endfor %}
+            </div>
+        </div>
+        {% else %}
+            <p>Please go along, there is nothing to see here.<p>
+        {% endif %}
+    </div>
+{% endblock %}
