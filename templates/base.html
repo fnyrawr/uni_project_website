@@ -6,15 +6,13 @@
 
   {% load static %}
 
-  <!-- Materialize CSS dependencies -->
-  <!--Import Google Icon Font-->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!--JQuery-->
-  <script type="text/javascript" src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
-  <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
-
-    {% load static %}
+      <!-- Materialize CSS dependencies -->
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--JQuery-->
+      <script type="text/javascript" src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
     {% block css %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/theming.css' %}">
     {% endblock %}

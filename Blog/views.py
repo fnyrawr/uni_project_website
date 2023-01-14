@@ -3,8 +3,6 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView
 from .forms import BlogForm, SearchForm
 from .models import Blog, BlogImage
-from django.core.files.storage import FileSystemStorage
-from django.conf import settings
 
 
 def blogpost_list(request):
@@ -17,10 +15,13 @@ def blogpost_list(request):
         searchForm = SearchForm(request.POST)
         data = searchForm.data
         title = data['title']
-        blogposts_found = Blog.objects.filter(title__contains=title)
         content = data['content']
-        if content:
-            blogposts_found = blogposts_found.filter(content__contains=content)
+        if title or content:
+            blogposts_found = Blog.objects
+            if title:
+                blogposts_found = blogposts_found.filter(title__contains=title)
+            if content:
+                blogposts_found = blogposts_found.filter(content__contains=content)
     else:
         all_blogposts = Blog.objects.all()
 

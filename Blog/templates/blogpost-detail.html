@@ -11,6 +11,8 @@
                     <div class="collapsible-header orange darken-1"><i class="material-icons">chat_bubble</i><span><b>{{ that_one_blogpost.title }}</b></span></div>
                     <div class="collapsible-body black grey-text text-lighten-1">
                         <p class="grey-text text-lighten-1">{{ that_one_blogpost.content }}</p><br>
+                        <span class="orange-text text-darken-1 right"><b class="grey-text text-lighten-1">Posted by</b> {{ that_one_blogpost.creator }}</span><br>
+                        <span class="orange-text text-darken-1 right">{{ that_one_blogpost.timestamp|date:"d.m.Y H:i" }}</span>
 
                         <div class="row">
                             {% for image in blogpost_images %}

@@ -71,3 +71,10 @@ label.active {
 .slider .indicators .indicator-item.active {
   background-color: #FB8C00 !important;
 }
+
+.oneline {
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
