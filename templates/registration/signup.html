@@ -6,70 +6,72 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col s12 m8">
-                <div class="card white">
-                    <div class="card-content orange lighten-3 white-text">
-                        <span class="card-title black-text">Signup</span>
-                        <form method="post">
-                            {% csrf_token %}
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <i class="material-icons prefix">person</i>
-                                    <label for="id_username">Username</label>
-                                    <input type="text" name="username" maxlength="150" autofocus required id="id_username">
-                                    <span class="helper-text" data-error="wrong" data-success="right">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span>
-                                </div>
-                                <div class="input-field col s6">
-                                    <i class="material-icons prefix">mail</i>
-                                    <label for="id_email">E-Mail</label>
-                                    <input type="email" name="email" maxlength="254" required id="id_email">
-                                    <span class="helper-text" data-error="wrong" data-success="right">Required.</span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <i class="material-icons prefix">label</i>
-                                    <label for="id_first_name">First name</label>
-                                    <input type="text" name="first_name" maxlength="150" id="id_first_name">
-                                </div>
-                                <div class="input-field col s6">
-                                    <i class="material-icons prefix">label</i>
-                                    <label for="id_last_name">Last name</label>
-                                    <input type="text" name="last_name" maxlength="150" id="id_last_name">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="file-field input-field col s12">
-                                    <div class="waves-effect waves-light btn orange darken-1">
-                                        <span><i class="material-icons left">photo</i> Upload profile picture</span>
-                                        <input type="file">
+            <div class="col s12 m6">
+                <ul class="collapsible popout">
+                    <li class="active">
+                        <div class="collapsible-header orange darken-1"><i class="material-icons">edit</i><span><b>Signup</b></span></div>
+                        <div class="collapsible-body black grey-text text-lighten-1">
+                            <form method="post">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <i class="material-icons prefix">person</i>
+                                        <label for="id_username">Username</label>
+                                        <input type="text" name="username" maxlength="150" autofocus required id="id_username" class="grey-text text-lighten-1">
+                                        <span class="helper-text grey-text text-lighten-1" data-error="wrong" data-success="right">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span>
                                     </div>
-                                    <div class="file-path-wrapper">
-                                        <input class="file-path" type="text" name="profile_picture" accept="image/*" id="id_profile_picture" placeholder="Profile picture">
+                                    <div class="input-field col s6">
+                                        <i class="material-icons prefix">mail</i>
+                                        <label for="id_email">E-Mail</label>
+                                        <input type="email" name="email" maxlength="254" required id="id_email" class="grey-text text-lighten-1">
+                                        <span class="helper-text grey-text text-lighten-1" data-error="wrong" data-success="right">Required.</span>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <i class="material-icons prefix">vpn_key</i>
-                                    <label for="id_password1">Password</label>
-                                    <input type="password" name="password1" autocomplete="new-password" required id="id_password1">
-                                    <span class="helper-text" data-error="wrong" data-success="right"><ul><li>Your password can’t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can’t be a commonly used password.</li><li>Your password can’t be entirely numeric.</li></ul></span>
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <i class="material-icons prefix">label</i>
+                                        <label for="id_first_name">First name</label>
+                                        <input type="text" name="first_name" maxlength="150" id="id_first_name" class="grey-text text-lighten-1">
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <i class="material-icons prefix">label</i>
+                                        <label for="id_last_name">Last name</label>
+                                        <input type="text" name="last_name" maxlength="150" id="id_last_name" class="grey-text text-lighten-1">
+                                    </div>
                                 </div>
-                                <div class="input-field col s6">
-                                    <i class="material-icons prefix">vpn_key</i>
-                                    <label for="id_password2">Password confirmation</label>
-                                    <input type="password" name="password2" autocomplete="new-password" required id="id_password2">
-                                    <span class="helper-text" data-error="wrong" data-success="right">Enter the same password as before, for verification.</span>
+                                <div class="row">
+                                    <div class="file-field input-field col s12">
+                                        <div class="waves-effect waves-light btn orange darken-1 black-text">
+                                            <span><i class="material-icons left">photo</i> Upload profile picture</span>
+                                            <input type="file">
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path grey-text text-lighten-1" type="text" name="profile_picture" accept="image/*" id="id_profile_picture" placeholder="Profile picture">
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="red-text text-darken-1">
-                                {{ form.errors }}
-                            </div>
-                            <button type="submit" class="waves-effect waves-light btn orange darken-1"><i class="material-icons left">person_add</i>Sign up</button>
-                        </form>
-                    </div>
-                </div>
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <i class="material-icons prefix">vpn_key</i>
+                                        <label for="id_password1">Password</label>
+                                        <input type="password" name="password1" autocomplete="new-password" required id="id_password1" class="grey-text text-lighten-1">
+                                        <span class="helper-text grey-text text-lighten-1" data-error="wrong" data-success="right"><ul><li>Your password can’t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can’t be a commonly used password.</li><li>Your password can’t be entirely numeric.</li></ul></span>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <i class="material-icons prefix">vpn_key</i>
+                                        <label for="id_password2">Password confirmation</label>
+                                        <input type="password" name="password2" autocomplete="new-password" required id="id_password2" class="grey-text text-lighten-1">
+                                        <span class="helper-text grey-text text-lighten-1" data-error="wrong" data-success="right">Enter the same password as before, for verification.</span>
+                                    </div>
+                                </div>
+                                <div class="red-text text-darken-1">
+                                    {{ form.errors }}
+                                </div>
+                                <button type="submit" class="waves-effect waves-light btn-large orange darken-1 black-text"><i class="material-icons left">person_add</i>Sign up</button>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

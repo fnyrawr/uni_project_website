@@ -4,15 +4,31 @@
 {% load static %}
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col s12 m6">
-                <div class="card orange lighten-3 z-depth-3">
-                    <div class="card-content">
-                        <p>Download Section</p>
+    <div class="section black">
+        <div class="row container">
+            <h2 class="header orange-text text-darken-1">Download Section</h2>
+            <p class="grey-text text-lighten-1">Currently there are no builds available yet. You may clone the project and build it yourself in Unity for now.</p>
+            <ul class="collapsible popout">
+                <li>
+                    <div class="collapsible-header orange"><i class="material-icons">download</i><span><b>Windows</b></span></div>
+                    <div class="collapsible-body black grey-text text-lighten-1">
+                        <span>No build is available yet.</span>
                     </div>
-                </div>
-            </div>
+                </li>
+                <li>
+                    <div class="collapsible-header orange darken-2"><i class="material-icons">download</i><span><b>Mac OS</b></span></div>
+                    <div class="collapsible-body black grey-text text-lighten-1">
+                        <span>No build is available yet.</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header orange darken-4"><i class="material-icons">build</i><span><b>Source</b> For building yourself</span></div>
+                    <div class="collapsible-body black grey-text text-lighten-1">
+                        <span>Get the sourcecode and files directly from our Git Repository. You need to open Unity and build the game by yourself. Click on the download button to get started.</span>
+                        <br><br><a href="https://github.com/fnyrawr/capybarastudios/archive/refs/heads/master.zip" class="waves-effect waves-light btn orange darken-4 black-text"><i class="material-icons left">cloud_download</i>Download ZIP</a>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 {% endblock %}

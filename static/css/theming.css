@@ -3,8 +3,8 @@ body {
 }
 
 input {
-  border-bottom: #000000 !important;
-  box-shadow: 0 1px 0 0 #000000 !important;
+  border-bottom: #BDBDBD !important;
+  box-shadow: 0 1px 0 0 #BDBDBD !important;
 }
 
 input:focus {
@@ -13,7 +13,7 @@ input:focus {
 }
 
 .input-field .prefix {
-  color: #000000 !important;
+  color: #BDBDBD !important;
 }
 
 .input-field .prefix.active {
@@ -50,5 +50,20 @@ label.active {
 }
 
 .navbar-material .nav-wrapper .brand-logo img {
-    height: 64px;
+  height: 64px;
+}
+
+.collapsible-header, .collapsible-body, .collapsible, ul.collapsible>li
+{
+  border: 0px !important;
+  border-bottom: 0px !important;
+  box-shadow: none !important;
+}
+
+.slider .indicators .indicator-item {
+  background-color: #BFBFBF !important;
+}
+
+.slider .indicators .indicator-item.active {
+  background-color: #FB8C00 !important;
 }

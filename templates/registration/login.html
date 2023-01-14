@@ -7,27 +7,29 @@
     <div class="container">
         <div class="row">
             <div class="col s12 m6">
-                <div class="card white">
-                    <div class="card-content orange lighten-3 white-text">
-                        <span class="card-title black-text">Login</span>
+                <ul class="collapsible popout">
+                <li class="active">
+                    <div class="collapsible-header orange darken-1"><i class="material-icons">login</i><span><b>Login</b></span></div>
+                    <div class="collapsible-body black grey-text text-lighten-1">
                         <form method="post">
                             {% csrf_token %}
                             <div class="row">
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">person</i>
                                     <label for="id_username">Username</label>
-                                    <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username">
+                                    <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username" class="grey-text text-lighten-1">
                                 </div>
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">vpn_key</i>
                                     <label for="id_password">Password</label>
-                                    <input type="password" name="password" autocapitalize="none" autocomplete="current-password" maxlength="150" required id="id_password">
+                                    <input type="password" name="password" autocapitalize="none" autocomplete="current-password" maxlength="150" required id="id_password" class="grey-text text-lighten-1">
                                 </div>
                             </div>
-                            <button type="submit" class="waves-effect waves-light btn orange darken-1"><i class="material-icons left">login</i>Login</button>
+                            <button type="submit" class="waves-effect waves-light btn-large orange darken-1 black-text"><i class="material-icons left">login</i>Login</button>
                         </form>
                     </div>
-                </div>
+                </li>
+            </ul>
             </div>
         </div>
     </div>

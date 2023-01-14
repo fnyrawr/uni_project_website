@@ -4,7 +4,12 @@
 - [x] Get base Django page running `@Florian`
 - [x] Implement Login / Logout `@Florian`
 - [x] Create base page design (styling) `@Florian`
-- [ ] Implement basic functionalities for About / Download / Blog / Leaderboard sections `@Florian`
+- [ ] Implement basic functionalities for
+  - [x] About `@Florian`
+  - [x] Download `@Florian`
+  - [x] How to play `@Florian`
+  - [ ] Blog `@Florian`
+  - [ ] Leaderboard `@Florian`
 - [ ] Implement Blog entry functionalities `@Florian`
 - [ ] Implement Leaderboard functionalities `@Florian (Page)` `@Eric (Unity)`
 - [ ] Fill page with contents `@Florian (Design and Page)` `@Zainab (Text)`

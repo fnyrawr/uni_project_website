@@ -6,7 +6,7 @@
 {% block content %}
     <div class="section black">
         <div class="row container">
-            <h2 class="header white-text">About our Game</h2>
+            <h2 class="header orange-text text-darken-1">About our Game</h2>
             <p class="grey-text text-lighten-1">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
         </div>
     </div>
@@ -15,8 +15,32 @@
     </div>
     <div class="section black">
         <div class="row container">
-            <h2 class="header white-text">About us</h2>
-            <p class="grey-text text-lighten-1">We are a team of 7 students currently being in 5th semester of Media IT studies at BHT Berlin.</p>
+            <h2 class="header orange-text text-darken-1">Gamemodes and Maps</h2>
+            <p class="grey-text text-lighten-1">Our Game features Singleplayer aswell as Multiplayer modes. In Singleplayer you fight your way through the map against bots fulfilling an objective. There is a leaderboard where you might end up seeing your score if you prove to be good enough. In Multiplayer you can play online with your friends.</p>
+            <ul class="collapsible popout">
+                <li>
+                    <div class="collapsible-header orange"><i class="material-icons">person</i><span><b>Singleplayer</b> Space</span></div>
+                    <div class="collapsible-body black grey-text text-lighten-1">
+                        <span>Fight your way through space. Enter the space base, fight your way through the graveyard and get back to earth ASAP.</span>
+                        <div class="row">
+                            <div class="col s6 m6">
+                                <img class="materialboxed" src="{% static '/images/space.png' %}" width="100%">
+                            </div>
+                            <div class="col s6 m6">
+                                <img class="materialboxed" src="{% static '/images/woods.png' %}" width="100%">
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header orange darken-2"><i class="material-icons">person</i><span><b>Singleplayer</b> Military Base</span></div>
+                    <div class="collapsible-body black grey-text text-lighten-1"><span>Currently WIP</span></div>
+                </li>
+                <li>
+                    <div class="collapsible-header orange darken-4"><i class="material-icons">group</i><span><b>Multiplayer</b> Warehouse</span></div>
+                    <div class="collapsible-body black grey-text text-lighten-1"><span>Play online with your friends in this chaotic but interesting looking warehouse.</span></div>
+                </li>
+            </ul>
         </div>
     </div>
     <div class="parallax-container">
@@ -24,30 +48,86 @@
     </div>
     <div class="section black">
         <div class="row container">
-            <h2 class="header white-text">Weapons</h2>
+            <h2 class="header orange-text text-darken-1">Weapons</h2>
             <p class="grey-text text-lighten-1">In your spawn area you can choose your weapon for your run. Check out what we've got for you.</p>
         </div>
           <div class="carousel">
               <div class="carousel-item grey-text text-lighten-1">
                   <img src="{% static '/images/Capybara.png' %}">
-                  <p><b>Weapon 1:</b> Very strong, try it out.</p>
+                  <p><b>Revolver:</b> Classic one. For the extra portion western style.</p>
               </div>
               <div class="carousel-item grey-text text-lighten-1">
                   <img src="{% static '/images/Capybara.png' %}">
-                  <p><b>Weapon 2:</b> Awesome killing tool.</p>
+                  <p><b>Shotgun:</b> Better don't come closer or it will hurt more.</p>
               </div>
               <div class="carousel-item grey-text text-lighten-1">
                   <img src="{% static '/images/Capybara.png' %}">
-                  <p><b>Weapon 3:</b> Better don't tell your parents.</p>
+                  <p><b>AK47:</b> Kill like a real rebel. Or disassamble and hide it in the woods until next adventure.</p>
               </div>
               <div class="carousel-item grey-text text-lighten-1">
                   <img src="{% static '/images/Capybara.png' %}">
-                  <p><b>Weapon 4:</b> Lost your reciept when you sold your soul?</p>
+                  <p><b>Assault Rifle:</b> Bring out the big one. Who needs aim with this firerate?</p>
               </div>
               <div class="carousel-item grey-text text-lighten-1">
                   <img src="{% static '/images/Capybara.png' %}">
-                  <p><b>Weapon 5:</b> Okay, now we're talking.</p>
+                  <p><b>Lil Uzi:</b> Push me to the edge, all your friends are dead!</p>
+              </div>
+              <div class="carousel-item grey-text text-lighten-1">
+                  <img src="{% static '/images/Capybara.png' %}">
+                  <p><b>Sniper:</b> Better be safe than sorry. Ready, take aim, go!</p>
+              </div>
+              <div class="carousel-item grey-text text-lighten-1">
+                  <img src="{% static '/images/Capybara.png' %}">
+                  <p><b>Grappling Gun:</b> Let's get outta here quick!</p>
+              </div>
+              <div class="carousel-item grey-text text-lighten-1">
+                  <img src="{% static '/images/Capybara.png' %}">
+                  <p><b>Grenade Launcher:</b> Boom! Here comes a boom! Ready or not, how you like me now?</p>
+              </div>
+              <div class="carousel-item grey-text text-lighten-1">
+                  <img src="{% static '/images/Capybara.png' %}">
+                  <p><b>Knife:</b> Who needs firearms? Stealth is way cooler.</p>
               </div>
           </div>
+    </div>
+    <div class="parallax-container">
+        <div class="parallax"><img src="{% static '/images/space.png' %}"></div>
+    </div>
+    <div class="section black">
+        <div class="row container white-text">
+            <h2 class="header orange-text text-darken-1">Our Team</h2>
+            <table class="highlight col s12 m6 l4">
+                <tbody>
+                    <tr>
+                        <td><b>Eric</b></td>
+                        <td>Producer and Developer</td>
+                    </tr>
+                    <tr>
+                        <td><b>Zainab</b></td>
+                        <td>UI Designer and Projectmanagement</td>
+                    </tr>
+                    <tr>
+                        <td><b>Florian</b></td>
+                        <td>Sounddesigner and Webdeveloper</td>
+                    </tr>
+                    <tr>
+                        <td><b>Erdenay</b></td>
+                        <td>Environment- and Mapdesigner</td>
+                    </tr>
+                    <tr>
+                        <td><b>Deniz</b></td>
+                        <td>Asset Creator</td>
+                    </tr>
+                    <tr>
+                        <td><b>Felix</b></td>
+                        <td>Developer</td>
+                    </tr>
+                    <tr>
+                        <td><b>Adrian</b></td>
+                        <td>Developer</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 {% endblock %}
