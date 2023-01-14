@@ -64,11 +64,11 @@ label.active {
   box-shadow: none !important;
 }
 
-.slider .indicators .indicator-item {
+.carousel .indicators .indicator-item {
   background-color: #BFBFBF !important;
 }
 
-.slider .indicators .indicator-item.active {
+.carousel .indicator-item.active {
   background-color: #FB8C00 !important;
 }
 
@@ -77,4 +77,19 @@ label.active {
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.parallax-container {
+  height: 350px;
+}
+
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
 }
