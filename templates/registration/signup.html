@@ -6,12 +6,12 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col s12 m6">
+            <div class="col s12 m8">
                 <ul class="collapsible popout">
                     <li class="active">
                         <div class="collapsible-header orange darken-1"><i class="material-icons">edit</i><span><b>Signup</b></span></div>
                         <div class="collapsible-body black grey-text text-lighten-1">
-                            <form method="post">
+                            <form method="POST" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <div class="row">
                                     <div class="input-field col s6">

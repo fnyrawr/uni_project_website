@@ -8,9 +8,9 @@
   - [x] About `@Florian`
   - [x] Download `@Florian`
   - [x] How to play `@Florian`
-  - [ ] Blog `@Florian`
+  - [x] Blog `@Florian`
   - [ ] Leaderboard `@Florian`
-- [ ] Implement Blog entry functionalities `@Florian`
+- [x] Implement Blog entry functionalities `@Florian`
 - [ ] Implement Leaderboard functionalities `@Florian (Page)` `@Eric (Unity)`
 - [ ] Fill page with contents `@Florian (Design and Page)` `@Zainab (Text)`
 - [ ] Test website functionalities `@everyone`

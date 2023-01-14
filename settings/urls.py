@@ -20,6 +20,8 @@ from django.conf.urls.static import static
 from django.views.generic import TemplateView
 
 urlpatterns = [
+    path("blog/", include("Blog.urls")),
+    path("blog/", include("django.contrib.auth.urls")),
     path("users/", include("User.urls")),
     path("users/", include("django.contrib.auth.urls")),
     path('admin/', admin.site.urls),

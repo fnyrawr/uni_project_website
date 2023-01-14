@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}CapybaraStudios - Blogpost {{ that_one_blogpost.title }} details{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <ul class="collapsible popout col s12 m12">
+                <li class="active">
+                    <div class="collapsible-header orange darken-1"><i class="material-icons">chat_bubble</i><span><b>{{ that_one_blogpost.title }}</b></span></div>
+                    <div class="collapsible-body black grey-text text-lighten-1">
+                        <p class="grey-text text-lighten-1">{{ that_one_blogpost.content }}</p><br>
+
+                        <div class="row">
+                            {% for image in blogpost_images %}
+                                <div class="col s3">
+                                    <img class="materialboxed" src="{{ image.image.url }}" style="max-width: 100%; max-height: 250px"><br>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        {% if user.is_authenticated %}
+                            {% if is_authorized %}
+                                <br><br>
+                                <a class="waves-effect btn btn orange darken-1 black-text" href="{% url 'blogpost-edit' that_one_blogpost.id %}"><i class="material-icons left">edit</i>Edit Blogpost</a>
+                                <a class="waves-effect btn white orange-text text-darken-1" href="{% url 'blogpost-delete' that_one_blogpost.id %}"><i class="material-icons left">delete</i>Delete Blogpost</a>
+                                {% endif %}
+                        {% endif %}
+                    </div>
+                </li>
+            </ul>
+            <a class="waves-effect btn orange darken-1 black-text" href="{% url 'blogpost-list' %}"><i class="material-icons left">arrow_back</i>Back to Blogposts</a>
+        </div>
+    </div>
+
+    <br><br><br>
+{% endblock %}

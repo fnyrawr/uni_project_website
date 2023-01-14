@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}CapybaraStudios - Edit Blogpost {{ blogpost.title }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% if user.is_authenticated %}
+            {% block logged_in_content %}
+                <div class="row">
+                    <ul class="collapsible popout col s12 m12">
+                        <li class="active">
+                            <div class="collapsible-header orange darken-1"><i class="material-icons">edit</i><span><b>Edit Blogpost</b></span></div>
+                            <div class="collapsible-body black grey-text text-lighten-1">
+                                <form method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="input-field col s4">
+                                            <label for="{{ form.title.id_for_label }}">{{ form.title.label }}</label>
+                                            <input type="{{ form.title.field.widget.input_type}}" name="{{ form.title.html_name }}" id="{{ form.title.id_for_label }}" value="{{ blogpost.title }}" maxlength="100" required class="grey-text text-lighten-1">
+                                        </div>
+                                        <div class="input-field col s8">
+                                            <label for="{{ form.content.id_for_label }}">{{ form.content.label }}</label>
+                                            <textarea name="{{ form.content.html_name }}" class="materialize-textarea grey-text text-lighten-1" cols="40" rows="10" id="{{ form.content.id_for_label }}">{{ blogpost.content }}</textarea>
+                                        </div>
+                                        <div class="file-field input-field col s12">
+                                            <div class="waves-effect waves-light btn orange darken-1 black-text">
+                                                <span><i class="material-icons left">photo</i> Upload blogpost pictures</span>
+                                                <input type="file" multiple accept="image/*" name="images">
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path grey-text text-lighten-1" type="text" placeholder="Blogpost pictures">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        {% for image in images %}
+                                            <div class="col s3">
+                                                <br><img class="materialboxed" src="{{ image.image.url }}" style="max-width: 90%; max-height: 150px">
+                                                <a class="waves-effect waves-light btn white orange-text text-darken-1" href="{% url 'image-delete' blogpost.id image.id %}"><i class="material-icons left">delete</i>Remove image</a>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="card-action">
+                                        <button type="submit" class="waves-effect waves-light btn-large orange darken-1 black-text"><i class="material-icons left">cloud_upload</i> Submit changes</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+        {% endblock %}
+        {% else %}
+            {% block not_logged_in_content %}
+                <h3 class="orange-text text-darken-1">Edit Blogpost {{ blogpost.title }}</h3>
+                <p class="grey-text text-lighten-1">Sorry but only staff members can edit blogposts.</p>
+            {% endblock %}
+        {% endif %}
+    </div>
+{% endblock %}

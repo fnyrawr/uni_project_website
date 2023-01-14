@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}CapybaraStudios - Blogposts{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h3 class="orange-text text-darken-1">Blogpost list</h3>
+
+        <div class="row">
+            <div class="col s6">
+                <ul class="collapsible popout">
+                    <li>
+                        <div class="collapsible-header orange darken-1"><i class="material-icons">search</i><span><b>Blogpost Search</b></span></div>
+                        <div class="collapsible-body black grey-text text-lighten-1">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="card-content">
+                                    <div class="row">
+                                        <div class="input-field col s6 grey-text">
+                                            <label for="id_title">Title</label>
+                                            <input type="text" name="title" maxlength="100" required id="id_title" class="grey-text text-lighten-1">
+                                        </div>
+                                        <div class="input-field col s6 grey-text">
+                                            <label for="id_content">Content</label>
+                                            <textarea name="content" class="materialize-textarea grey-text text-lighten-1" cols="40" rows="10" id="id_content"></textarea>
+                                        </div>
+                                    </div>
+                                    <button class="waves-effect btn orange darken-1 black-text" type="submit"><i class="material-icons left">search</i>Search</button>
+                                    {% if search %}
+                                        <a class="waves-effect btn white orange-text text-darken-1" href={% url 'blogpost-list' %}><i class="material-icons left">clear</i>Clear filters</a>
+                                    {% endif %}
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col s3">
+                {% if user.is_authorized %}
+                    <a class="waves-effect btn orange darken-1 black-text" href={% url 'blogpost-create' %}><i class="material-icons left">add</i>Write a Blogpost</a><br><br>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row">
+            {% if search %}
+                <h5>Search results</h5>
+                {% for blogpost in blogposts_found %}
+                    <div class="col s4">
+                        <div class="card sticky-action black grey-text text-lighten-1 large">
+                            <div class="card-image waves-effect waves-block waves-light" style="height: 500px;">
+                                {% with p_image=blogpost.first_image %}
+                                    {% if p_image %}
+                                        <a href="{{ blogpost.id }}/"><img src="{{ p_image.image.url }}" alt="BlogpostImage" style="width: 100%; height: auto"></a>
+                                    {% else %}
+                                        <a href="{{ blogpost.id }}/"><img src="{% static '/images/Capybara.png' %}" alt="CapybaraLogo" style="width: 100%; height: auto"></a>
+                                    {% endif %}
+                                {% endwith %}
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title orange-text text-darken-1"><b>{{ blogpost.title }}</b></span>
+                                <p>{{ blogpost.content }}</p>
+                                <a class="orange-text text-darken-1 right" href="{{ blogpost.id }}/">View blogpost</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                {% for blogpost in all_blogposts %}
+                    <div class="col s4">
+                        <div class="card sticky-action black grey-text text-lighten-1 large">
+                            <div class="card-image waves-effect waves-block waves-light" style="height: 500px;">
+                                {% with p_image=blogpost.first_image %}
+                                    {% if p_image %}
+                                        <a href="{{ blogpost.id }}/"><img src="{{ p_image.image.url }}" alt="BlogpostImage" style="width: 100%; height: auto"></a>
+                                    {% else %}
+                                        <a href="{{ blogpost.id }}/"><img src="{% static '/images/Capybara.png' %}" alt="CapybaraLogo" style="width: 100%; height: auto"></a>
+                                    {% endif %}
+                                {% endwith %}
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title orange-text text-darken-1"><b>{{ blogpost.title }}</b></span>
+                                <p>{{ blogpost.content }}</p>
+                                <a class="orange-text text-darken-1 right" href="{{ blogpost.id }}/">View blogpost</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+{% endblock %}
