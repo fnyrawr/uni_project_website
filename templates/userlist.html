@@ -10,24 +10,34 @@
         <div class="row">
             {% for myuser in all_users %}
                 <div class="col s3 m4">
-                    <div class="card orange lighten-3 z-depth-3">
+                    <div class="card black z-depth-3">
                         <div class="card-image">
                             {% if myuser.profile_picture %}
                                 <img src="{{ myuser.profile_picture.url }}">
                             {% else %}
-                                <div class="orange darken-1">
+                                <div class="black">
                                     <img src="{% static '/images/Capybara.png' %}">
                                 </div>
                             {% endif %}
-                            <span class="card-title">{{ myuser }}</span>
+                            <span class="card-title"><b>{{ myuser }}</b></span>
                         </div>
-                            <div class="card-content">
-                                <p><b>First name:</b> {{ myuser.first_name }}</p>
-                                <p><b>Last name:</b> {{ myuser.last_name }}</p>
-                                <p><b>E-Mail:</b> {{ myuser.email }}</p>
-                                <p><b>Role:</b> {{myuser.get_role_display}}</p>
-                                <p><b>Joined:</b> {{myuser.date_joined|date:"d.m.Y H:i"}}</p>
-                                <p><b>Last Login:</b> {{myuser.last_login|date:"d.m.Y H:i"}}</p>
+                            <div class="card-content grey-text text-lighten-1">
+                                {% if myuser.first_name %}
+                                    <span><b>First name</b></span>
+                                    <span class="right">{{ myuser.first_name }}</span><br>
+                                {% endif %}
+                                {% if myuser.last_name %}
+                                    <span><b>Last name</b></span>
+                                    <span class="right">{{ myuser.last_name }}</span><br>
+                                {% endif %}
+                                {% if myuser.email %}
+                                    <span><b>E-Mail</b></span>
+                                    <span class="right">{{ myuser.email }}</span><br>
+                                {% endif %}
+                                <span><b>Role</b></span>
+                                <span class="right">{{myuser.get_role_display}}</span><br><br>
+                                <span><b>Joined</b></span><span class="orange-text text-darken-1 right">{{myuser.date_joined|date:"d.m.Y H:i"}}</span><br>
+                                <span><b>Last Login</b></span><span class="orange-text text-darken-1 right">{{myuser.last_login|date:"d.m.Y H:i"}}</span>
                             </div>
                         </div>
                     </div>
@@ -35,7 +45,7 @@
             </div>
         </div>
         {% else %}
-            <p>Please go along, there is nothing to see here.<p>
+            <h5 class="grey-text text-lighten-1">Please go along, there is nothing to see here.<p>
         {% endif %}
     </div>
 {% endblock %}

@@ -30,15 +30,19 @@ label.active {
 }
 
 .dropdown-content {
-  background-color: #FF9800  !important;
+  background-color: #000000  !important;
 }
 
 .dropdown-content li>span {
-  color: #FB8C00  !important;
+  background-color: #000000  !important;
+}
+
+.dropdown-content li>span.hover {
+  background-color: #FB8C00  !important;
 }
 
 .dropdown-content li>a {
-  color: #FFFFFF !important;
+  color: #FB8C00 !important;
 }
 
 .select-content li>span {
