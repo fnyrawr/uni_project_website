@@ -30,6 +30,7 @@ urlpatterns = [
     path('home', TemplateView.as_view(template_name='about.html'), name='home'),
     path('howto', TemplateView.as_view(template_name='howto.html'), name='howto'),
     path('downloads', TemplateView.as_view(template_name='downloads.html'), name='downloads'),
+    path('leaderboard/', include("Leaderboard.urls"))
 ]
 
 if settings.DEBUG:

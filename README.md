@@ -4,19 +4,25 @@
 - [x] Get base Django page running `@Florian`
 - [x] Implement Login / Logout `@Florian`
 - [x] Create base page design (styling) `@Florian`
-- [ ] Implement basic functionalities for
+- [x] Implement basic functionalities for
   - [x] About `@Florian`
   - [x] Download `@Florian`
   - [x] How to play `@Florian`
   - [x] Blog `@Florian`
-  - [ ] Leaderboard `@Florian`
+  - [x] Leaderboard `@Florian`
 - [x] Implement Blog entry functionalities `@Florian`
-- [ ] Implement Leaderboard functionalities `@Florian (Page)` `@Eric (Unity)`
+- [ ] Implement Leaderboard functionalities
+  - [x] Page (POST and GET) `@Florian`
+  - [x] Creating Score entries in Unity `@Adrian`
+  - [ ] Sending data between Unity and Page `@Adrian`
+  - [ ] Sorting data in Leaderboard `@Florian`
+  - [ ] Admins can delete entries `@Florian`
 - [ ] Fill page with contents `@Florian (Design and Page)` `@Zainab (Text)`
 - [ ] Test website functionalities `@everyone`
 
 ##### Needed commands to get page running
 - pip install django
+- pip install djangorestframework
 - pip install Pillow (needed for profile pictures)
 - python -m venv ./venv (creating virtual environment)
 - venv\Scripts\activate

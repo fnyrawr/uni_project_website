@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}CapybaraStudios - Leaderboard{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h3 class="orange-text text-darken-1">Leaderboard</h3>
+
+        <div class="row">
+            <div class="col s6">
+                <ul class="collapsible popout">
+                    <li class="=active">
+                        <div class="collapsible-header orange darken-1"><i class="material-icons">search</i><span><b>Entry Search</b></span></div>
+                        <div class="collapsible-body black grey-text text-lighten-1">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="card-content">
+                                    <div class="row">
+                                        <div class="input-field col s6 grey-text">
+                                            <label for="id_playername">Playername</label>
+                                            <input type="text" name="playername" maxlength="100" id="id_playername" class="grey-text text-lighten-1">
+                                        </div>
+                                    </div>
+                                    <button class="waves-effect btn orange darken-1 black-text" type="submit"><i class="material-icons left">search</i>Search</button>
+                                    {% if search %}
+                                        <a class="waves-effect btn white orange-text text-darken-1" href={% url 'leaderboard-list' %}><i class="material-icons left">clear</i>Clear filters</a>
+                                    {% endif %}
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row white-text">
+            <table class="highlight col s12 m10 l10">
+                <thead class="orange-text text-darken-1">
+                    <tr>
+                        <th><b>Player Name</b></th>
+                        <th><b>Time taken</b></th>
+                        <th><b>Kill count</b></th>
+                        <th><b>Damage dealt</b></th>
+                        <th><b>Run made at</b></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if search %}
+                        {% for entry in entries_found %}
+                            <tr>
+                                <td><b>{{ entry.playername }}</b></td>
+                                <td>{{ entry.playtime }}</td>
+                                <td>{{ entry.killcount }}</td>
+                                <td>{{ entry.damagedealt }}</td>
+                                <td>{{ entry.time|date:"d.m.Y H:i" }}</td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        {% for entry in all_entries %}
+                            <tr>
+                                <td><b>{{ entry.playername }}</b></td>
+                                <td>{{ entry.playtime }}</td>
+                                <td>{{ entry.killcount }}</td>
+                                <td>{{ entry.damagedealt }}</td>
+                                <td>{{ entry.time|date:"d.m.Y H:i" }}</td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

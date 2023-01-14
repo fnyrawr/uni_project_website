@@ -39,7 +39,7 @@
                         <li><a class="waves-effect waves-light" href="{% url 'howto' %}">How to play</a></li>
                         <li><a class="waves-effect waves-light" href="{% url 'downloads' %}">Downloads</a></li>
                         <li><a class="waves-effect waves-light" href="{% url 'blogpost-list' %}">Blog</a></li>
-                        <li><a class="waves-effect waves-light">Leaderboard</a></li>
+                        <li><a class="waves-effect waves-light" href="{% url 'leaderboard-list' %}">Leaderboard</a></li>
                     </ul>
                     <ul id="login" class="right">
                         {% if user.is_authenticated %}
