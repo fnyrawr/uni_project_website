@@ -9,41 +9,40 @@
 
         <div class="row">
             <div class="col s6">
-                <ul class="collapsible popout">
-                    <li class="=active">
-                        <div class="collapsible-header orange darken-1"><i class="material-icons">search</i><span><b>Entry Search</b></span></div>
-                        <div class="collapsible-body black grey-text text-lighten-1">
-                            <form method="POST">
-                                {% csrf_token %}
-                                <div class="card-content">
-                                    <div class="row">
-                                        <div class="input-field col s6 grey-text">
-                                            <label for="id_playername">Playername</label>
-                                            <input type="text" name="playername" maxlength="100" id="id_playername" class="grey-text text-lighten-1">
-                                        </div>
-                                    </div>
-                                    <button class="waves-effect btn orange darken-1 black-text" type="submit"><i class="material-icons left">search</i>Search</button>
-                                    {% if search %}
-                                        <a class="waves-effect btn white orange-text text-darken-1" href={% url 'leaderboard-list' %}><i class="material-icons left">clear</i>Clear filters</a>
-                                    {% endif %}
-                                </div>
-                            </form>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="card-content">
+                        <input type="hidden" name="sortby" value="PT" maxlength="0">
+                        <div class="row">
+                            <div class="input-field col s6 grey-text text-lighten-1">
+                                <label for="id_playername">Scores by player</label>
+                                <input type="text" name="playername" maxlength="100" id="id_playername" class="grey-text text-lighten-1">
+                            </div>
+                            <div class="input-field col s4 grey-text text-lighten-1">
+                                <button class="waves-effect btn-flat orange-text text-darken-1" type="submit"><i class="material-icons left">search</i>Find</button>
+                            </div>
                         </div>
-                    </li>
-                </ul>
-            </div>
+                    </div>
+                </form>
         </div>
 
         <div class="row white-text">
             <table class="highlight col s12 m10 l10">
                 <thead class="orange-text text-darken-1">
-                    <tr>
-                        <th><b>Player Name</b></th>
-                        <th><b>Time taken</b></th>
-                        <th><b>Kill count</b></th>
-                        <th><b>Damage dealt</b></th>
-                        <th><b>Run made at</b></th>
-                    </tr>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="playername" maxlength="0">
+                        <tr>
+                            <th><button type="submit" name="sortby" value="PN" class="waves-effect waves-light btn-flat orange-text text-darken-1"><b>Player Name</b></button></th>
+                            <th><button type="submit" name="sortby" value="PT" class="waves-effect waves-light btn-flat orange-text text-darken-1"><b>Time taken</b></button></th>
+                            <th><button type="submit" name="sortby" value="KC" class="waves-effect waves-light btn-flat orange-text text-darken-1"><b>Kill count</b></button></th>
+                            <th><button type="submit" name="sortby" value="DD" class="waves-effect waves-light btn-flat orange-text text-darken-1"><b>Damage dealt</b></button></th>
+                            <th><b><button type="submit" name="sortby" value="TM" class="waves-effect waves-light btn-flat orange-text text-darken-1"><b>Run made at</b></button></b></th>
+                            {% if user.is_authorized %}
+                                <th><b><button type="submit" name="sortby" value="ID" class="waves-effect waves-light btn-flat orange-text text-darken-1"><b>Delete</b></button></b></th>
+                            {% endif %}
+                        </tr>
+                    </form>
                 </thead>
                 <tbody>
                     {% if search %}
@@ -54,6 +53,9 @@
                                 <td>{{ entry.killcount }}</td>
                                 <td>{{ entry.damagedealt }}</td>
                                 <td>{{ entry.time|date:"d.m.Y H:i" }}</td>
+                                {% if user.is_authorized %}
+                                    <td><a class="waves-effect btn-flat orange-text text-darken-1" href="{% url 'leaderboard-delete' entry.id %}" ><i class="material-icons left">delete</i></a></td>
+                                {% endif %}
                             </tr>
                         {% endfor %}
                     {% else %}
@@ -64,6 +66,9 @@
                                 <td>{{ entry.killcount }}</td>
                                 <td>{{ entry.damagedealt }}</td>
                                 <td>{{ entry.time|date:"d.m.Y H:i" }}</td>
+                                {% if user.is_authorized %}
+                                    <td><a class="waves-effect btn-flat orange-text text-darken-1" href="{% url 'leaderboard-delete' entry.id %}" ><i class="material-icons left">delete</i></a></td>
+                                {% endif %}
                             </tr>
                         {% endfor %}
                     {% endif %}

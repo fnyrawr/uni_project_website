@@ -8,3 +8,7 @@ class Leaderboard(models.Model):
     damagedealt = models.IntegerField()
     playtime = models.CharField(max_length=15)
     time = models.DateTimeField(default=datetime.now, blank=True)
+
+    class Meta:
+        verbose_name: 'Leaderboard'
+        verbose_name_plural: 'Leaderboards'

@@ -45,12 +45,20 @@ label.active {
   color: #FB8C00 !important;
 }
 
+.dropdown-content li>a, .dropdown-content li>span {
+  color: #FB8C00 !important;
+}
+
 .select-content li>span {
   color: #FB8C00 !important;
 }
 
 .select-content li>a {
   color: #FB8C00 !important;
+}
+
+.select-wrapper input.select-dropdown {
+    color: #BDBDBD !important;
 }
 
 .navbar-material .nav-wrapper .brand-logo img {

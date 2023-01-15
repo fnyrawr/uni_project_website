@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
+from django.views.generic import DeleteView
 from rest_framework import viewsets
 from .models import Leaderboard
 from .serializers import LeaderboardSerializer
@@ -15,11 +17,24 @@ def leaderboard_list(request):
         searchForm = SearchForm(request.POST)
         data = searchForm.data
         playername = data['playername']
+        entries_found = Leaderboard.objects.all()
+
         if playername:
-            if playername:
-                entries_found = Leaderboard.objects.filter(playername__contains=playername)
+            entries_found = entries_found.filter(playername__contains=playername)
+        if data['sortby'] == 'PN':
+            entries_found = entries_found.order_by('playername')
+        if data['sortby'] == 'KC':
+            entries_found = entries_found.order_by('-killcount')
+        if data['sortby'] == 'DD':
+            entries_found = entries_found.order_by('-damagedealt')
+        if data['sortby'] == 'TM':
+            entries_found = entries_found.order_by('-time')
+        if data['sortby'] == 'PT':
+            entries_found = entries_found.order_by('playtime')
+        if data['sortby'] == 'ID':
+            entries_found = entries_found.order_by('id')
     else:
-        all_entries = Leaderboard.objects.all()
+        all_entries = Leaderboard.objects.order_by('playtime')
 
     context = {'all_entries': all_entries,
                'entries_found': entries_found,
@@ -32,5 +47,18 @@ class LeaderboardView(viewsets.ModelViewSet):
     serializer_class = LeaderboardSerializer
 
     def get_queryset(self):
-        queryset = Leaderboard.objects.all()
+        queryset = Leaderboard.objects.order_by('-playtime')
         return queryset
+
+
+class LeaderboardDeleteView(DeleteView):
+    model = Leaderboard
+    context_object_name = 'that_one_entry'
+    template_name = 'leaderboard-delete.html'
+    success_url = reverse_lazy('leaderboard-list')
+
+    def post(self, request, **kwargs):
+        entry_id = kwargs['pk']
+        entry = Leaderboard.objects.get(id=entry_id)
+        entry.delete()
+        return redirect('leaderboard-list')

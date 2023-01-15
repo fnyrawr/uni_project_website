@@ -15,8 +15,12 @@
   - [x] Page (POST and GET) `@Florian`
   - [x] Creating Score entries in Unity `@Adrian`
   - [ ] Sending data between Unity and Page `@Adrian`
-  - [ ] Sorting data in Leaderboard `@Florian`
-  - [ ] Admins can delete entries `@Florian`
+  - [x] Sorting data in Leaderboard `@Florian`
+  - [x] Admins can delete entries `@Florian`
+- [ ] Implement Adminuser views
+  - [X] View users 
+  - [ ] Edit profile
+  - [ ] View own blogposts
 - [ ] Fill page with contents `@Florian (Design and Page)` `@Zainab (Text)`
 - [ ] Test website functionalities `@everyone`
 
