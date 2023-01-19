@@ -10,9 +10,8 @@ SORT_CHOICES = (
     ('ID', 'id'),
 )
 
-
 class SearchForm(forms.ModelForm):
     sortby = forms.ChoiceField(choices = SORT_CHOICES)
     class Meta:
         model = Leaderboard
-        fields = ['playername', 'sortby']
+        fields = ['playername', 'sortby', 'mapname']

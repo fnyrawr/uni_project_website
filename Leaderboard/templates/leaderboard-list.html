@@ -14,16 +14,30 @@
                     <div class="card-content">
                         <input type="hidden" name="sortby" value="PT" maxlength="0">
                         <div class="row">
-                            <div class="input-field col s6 grey-text text-lighten-1">
-                                <label for="id_playername">Scores by player</label>
-                                <input type="text" name="playername" maxlength="100" id="id_playername" class="grey-text text-lighten-1">
+                            <div class="input-field col s4">
+                                <select name="mapname" id="mapname">
+                                    <optgroup label="Singleplayer" class="grey-text text-lighten-1">
+                                        <option value="Space" {% if data.mapname == 'Space' %}selected{% endif %}>Space</option>
+                                        <option value="Dungeon" {% if data.mapname == 'Dungeon' %}selected{% endif %}>Dungeon</option>
+                                        <option value="MilitaryBase" {% if data.mapname == 'MilitaryBase' %}selected{% endif %}>MilitaryBase</option>
+                                    </optgroup>
+                                    <optgroup label="Multiplayer">
+                                        <option value="Warehouse" {% if data.mapname == 'Warehouse' %}selected{% endif %}>Warehouse</option>
+                                    </optgroup>
+                                </select>
+                                <label>Map</label>
                             </div>
-                            <div class="input-field col s4 grey-text text-lighten-1">
+                            <div class="input-field col s5 grey-text text-lighten-1">
+                                <label for="id_playername">Scores by player</label>
+                                <input type="text" name="playername" maxlength="100" id="id_playername" class="grey-text text-lighten-1" value="{{ data.playername }}">
+                            </div>
+                            <div class="input-field col s3 grey-text text-lighten-1">
                                 <button class="waves-effect btn-flat orange-text text-darken-1" type="submit"><i class="material-icons left">search</i>Find</button>
                             </div>
                         </div>
                     </div>
                 </form>
+            </div>
         </div>
 
         <div class="row white-text">
@@ -31,7 +45,8 @@
                 <thead class="orange-text text-darken-1">
                     <form method="POST">
                         {% csrf_token %}
-                        <input type="hidden" name="playername" maxlength="0">
+                        <input type="hidden" name="playername" value="{{ data.playername }}" maxlength="0">
+                        <input type="hidden" name="mapname" value="{{ data.mapname }}" maxlength="0">
                         <tr>
                             <th><button type="submit" name="sortby" value="PN" class="waves-effect waves-light btn-flat orange-text text-darken-1"><b>Player Name</b></button></th>
                             <th><button type="submit" name="sortby" value="PT" class="waves-effect waves-light btn-flat orange-text text-darken-1"><b>Time taken</b></button></th>

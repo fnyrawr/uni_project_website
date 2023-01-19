@@ -58,7 +58,11 @@ label.active {
 }
 
 .select-wrapper input.select-dropdown {
-    color: #BDBDBD !important;
+  color: #BDBDBD !important;
+}
+
+.select-dropdown li.optgroup>span {
+  color: #BDBDBD !important;
 }
 
 .navbar-material .nav-wrapper .brand-logo img {

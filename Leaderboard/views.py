@@ -12,12 +12,18 @@ def leaderboard_list(request):
     entries_found = None
     search = False
     searchForm = SearchForm
+    data = None
+    mapname = 'Space'
     if request.method == "POST":
         search = True
         searchForm = SearchForm(request.POST)
         data = searchForm.data
+        if data['mapname']:
+            mapname = data['mapname']
         playername = data['playername']
-        entries_found = Leaderboard.objects.all()
+        entries_found = Leaderboard.objects.filter(mapname__contains=mapname).order_by('playtime')
+
+        print(mapname)
 
         if playername:
             entries_found = entries_found.filter(playername__contains=playername)
@@ -34,12 +40,14 @@ def leaderboard_list(request):
         if data['sortby'] == 'ID':
             entries_found = entries_found.order_by('id')
     else:
-        all_entries = Leaderboard.objects.order_by('playtime')
+        all_entries = Leaderboard.objects.filter(mapname__contains=mapname).order_by('playtime')
 
     context = {'all_entries': all_entries,
                'entries_found': entries_found,
                'search': search,
-               'form': searchForm, }
+               'form': searchForm,
+               'data': data,
+               }
     return render(request, 'leaderboard-list.html', context)
 
 
