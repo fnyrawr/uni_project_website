@@ -3,7 +3,6 @@ from django.conf import settings
 from django.utils.timezone import now
 
 
-# Create your models here.
 class Blog(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField(blank=True)

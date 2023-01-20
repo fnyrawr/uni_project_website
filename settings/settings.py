@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'User.apps.UseradminConfig',
     'Blog.apps.BlogConfig',
     'Leaderboard.apps.LeaderboardConfig',
+    'Survey.apps.SurveyConfig',
     'rest_framework',
 ]
 

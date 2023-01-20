@@ -11,4 +11,6 @@ $(document).ready(function(){
         fullWidth: true,
         indicators: true
     });
+    $('.fixed-action-btn').floatingActionButton();
+    $('.tooltipped').tooltip();
 });

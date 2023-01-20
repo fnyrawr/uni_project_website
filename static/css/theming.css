@@ -91,6 +91,11 @@ label.active {
   text-overflow: ellipsis;
 }
 
+.responsive-img{
+    width: 100%;
+    height: auto;
+}
+
 .parallax-container {
   height: 350px;
 }

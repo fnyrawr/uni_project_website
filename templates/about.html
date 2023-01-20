@@ -4,6 +4,43 @@
 {% load static %}
 
 {% block content %}
+    <div class="fixed-action-btn">
+      <a class="btn-floating btn-large waves-effect waves-light modal-trigger orange darken-1" href="#modalQuestion">
+        <i class="large material-icons">chat_bubble</i>
+      </a>
+    </div>
+
+    <div id="modalQuestion" class="modal black grey-text text-lighten-1">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="modal-content">
+                <h4 class="orange-text text-darken-1"><i class="material-icons">chat_bubble</i> Write a question to us</h4>
+                <p>If you have any questions regarding our project feel free to note down your question. We will answer everything at the end of our presentation. Please don't forget to set a category as we will group questions by topic.</p>
+                <div class="row">
+                    <div class="input-field col s4">
+                        <select name="category" id="category">
+                            <option value="1" selected>Project & Management</option>
+                            <option value="2">Mechanics</option>
+                            <option value="3">Multiplayer</option>
+                            <option value="4">Assets, UI & Audio</option>
+                            <option value="5">Website</option>
+                        </select>
+                        <label>Category</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="question">Question</label>
+                        <textarea name="question" class="materialize-textarea grey-text text-lighten-1" cols="40" rows="10" id="question"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer orange darken-1">
+                <a class="modal-close waves-effect waves-light btn-flat white-text" type="submit"><i class="material-icons left">send</i>Send</a>
+            </div>
+        </form>
+    </div>
+
     <div class="section black">
         <div class="row container">
             <h2 class="header orange-text text-darken-1">About our Game</h2>
@@ -33,11 +70,15 @@
                     </div>
                 </li>
                 <li>
+                    <div class="collapsible-header orange darken-1"><i class="material-icons">person</i><span><b>Singleplayer</b> Dungeon</span></div>
+                    <div class="collapsible-body black grey-text text-lighten-1"><span>Currently WIP</span></div>
+                </li>
+                <li>
                     <div class="collapsible-header orange darken-2"><i class="material-icons">person</i><span><b>Singleplayer</b> Military Base</span></div>
                     <div class="collapsible-body black grey-text text-lighten-1"><span>Currently WIP</span></div>
                 </li>
                 <li>
-                    <div class="collapsible-header orange darken-4"><i class="material-icons">group</i><span><b>Multiplayer</b> Warehouse</span></div>
+                    <div class="collapsible-header orange darken-3"><i class="material-icons">group</i><span><b>Multiplayer</b> Warehouse</span></div>
                     <div class="collapsible-body black grey-text text-lighten-1"><span>Play online with your friends in this chaotic but interesting looking warehouse.</span></div>
                 </li>
             </ul>
@@ -49,47 +90,53 @@
     <div class="section black">
         <div class="row container">
             <h2 class="header orange-text text-darken-1">Weapons</h2>
-            <p class="grey-text text-lighten-1">In your spawn area you can choose your weapon for your run. Check out what we've got for you.</p>
+            <p class="grey-text text-lighten-1">Im our game you can find different kinds of weapons for many usecases and playstyles. Check out what we've got for you.</p>
         </div>
-          <div class="carousel">
-              <div class="carousel-item grey-text text-lighten-1">
-                  <img src="{% static '/images/Capybara.png' %}">
-                  <p><b>Revolver:</b> Classic one. For the extra portion western style.</p>
-              </div>
-              <div class="carousel-item grey-text text-lighten-1">
-                  <img src="{% static '/images/Capybara.png' %}">
-                  <p><b>Shotgun:</b> Better don't come closer or it will hurt more.</p>
-              </div>
-              <div class="carousel-item grey-text text-lighten-1">
-                  <img src="{% static '/images/Capybara.png' %}">
-                  <p><b>AK47:</b> Kill like a real rebel. Or disassamble and hide it in the woods until next adventure.</p>
-              </div>
-              <div class="carousel-item grey-text text-lighten-1">
-                  <img src="{% static '/images/Capybara.png' %}">
-                  <p><b>Assault Rifle:</b> Bring out the big one. Who needs aim with this firerate?</p>
-              </div>
-              <div class="carousel-item grey-text text-lighten-1">
-                  <img src="{% static '/images/Capybara.png' %}">
-                  <p><b>Lil Uzi:</b> Push me to the edge, all your friends are dead!</p>
-              </div>
-              <div class="carousel-item grey-text text-lighten-1">
-                  <img src="{% static '/images/Capybara.png' %}">
-                  <p><b>Sniper:</b> Better be safe than sorry. Ready, take aim, go!</p>
-              </div>
-              <div class="carousel-item grey-text text-lighten-1">
-                  <img src="{% static '/images/Capybara.png' %}">
-                  <p><b>Grappling Gun:</b> Let's get outta here quick!</p>
-              </div>
-              <div class="carousel-item grey-text text-lighten-1">
-                  <img src="{% static '/images/Capybara.png' %}">
-                  <p><b>Grenade Launcher:</b> Boom! Here comes a boom! Ready or not, how you like me now?</p>
-              </div>
-              <div class="carousel-item grey-text text-lighten-1">
-                  <img src="{% static '/images/Capybara.png' %}">
-                  <p><b>Knife:</b> Who needs firearms? Stealth is way cooler.</p>
-              </div>
-          </div>
+
+        <div class="carousel">
+            <div class="carousel-item grey-text text-lighten-1">
+                <img src="{% static '/images/weapons/Revolver.png' %}">
+                <span><b class="orange-text text-darken-1">Revolver</b><br>Range ++<br>Damage +<br>Firerate +</span>
+            </div>
+            <div class="carousel-item grey-text text-lighten-1">
+                <img src="{% static '/images/weapons/Shotgun.png' %}">
+                <span><b class="orange-text text-darken-1">Shotgun</b><br>Range +<br>Damage +++<br>Firerate +</span>
+            </div>
+            <div class="carousel-item grey-text text-lighten-1">
+                <img src="{% static '/images/weapons/Assault_Rifle.png' %}">
+                <span><b class="orange-text text-darken-1">Assault Rifle</b><br>Range +<br>Damage +<br>Firerate +++</span>
+            </div>
+            <div class="carousel-item grey-text text-lighten-1">
+                <img src="{% static '/images/weapons/Heavy_MachineGun.png' %}">
+                <span><b class="orange-text text-darken-1">Heavy Machine Gun</b><br>Range ++<br>Damage +<br>Firerate ++</span>
+            </div>
+            <div class="carousel-item grey-text text-lighten-1">
+                <img src="{% static '/images/weapons/Uzi.png' %}">
+                <span><b class="orange-text text-darken-1">Uzi</b><br>Range +<br>Damage +<br>Firerate +++</span>
+            </div>
+            <div class="carousel-item grey-text text-lighten-1">
+                <img src="{% static '/images/weapons/Sniper.png' %}">
+                <span><b class="orange-text text-darken-1">Sniper</b><br>Range +++<br>Damage +++<br>Firerate +</span>
+            </div>
+            <div class="carousel-item grey-text text-lighten-1">
+                <img src="{% static '/images/weapons/GrappleGun.png' %}">
+                <span><b class="orange-text text-darken-1">Grapple Gun</b><br>Range +<br>Damage -<br>Firerate +</span>
+            </div>
+            <div class="carousel-item grey-text text-lighten-1">
+                <img src="{% static '/images/weapons/Cannonball_Launcher.png' %}">
+                <span><b class="orange-text text-darken-1">Cannonball Launcher</b><br>Range +++<br>Damage +++<br>Firerate -</span>
+            </div>
+            <div class="carousel-item grey-text text-lighten-1">
+                <img src="{% static '/images/weapons/HRL.png' %}">
+                <span><b class="orange-text text-darken-1">Handheld Rocket Launcher</b><br>Range +++<br>Damage +++<br>Firerate +</span>
+            </div>
+            <div class="carousel-item grey-text text-lighten-1">
+                <img src="{% static '/images/weapons/Knife.png' %}">
+                <span><b class="orange-text text-darken-1">Knife</b><br>Range -<br>Damage ++<br>Firerate +</span>
+            </div>
+        </div>
     </div>
+
     <div class="parallax-container">
         <div class="parallax"><img src="{% static '/images/Nightsky.png' %}"></div>
     </div>
