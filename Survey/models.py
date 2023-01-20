@@ -11,15 +11,6 @@ RATING_CHOICES = [
     ]
 
 
-CATEGORY_CHOICES = [
-        ('1', 'Project & Management'),
-        ('2', 'Mechanics'),
-        ('3', 'Multiplayer'),
-        ('4', 'Assets, UI & Audio'),
-        ('5', 'Website'),
-    ]
-
-
 class Survey(models.Model):
     name = models.CharField(max_length=50)
     review = models.TextField()
@@ -60,10 +51,7 @@ class Survey(models.Model):
 
 
 class Question(models.Model):
-    category = models.CharField(
-        max_length=1,
-        choices=RATING_CHOICES,
-    )
+    category = models.CharField(max_length=15, default='Project & Management')
     question = models.TextField()
     timestamp = models.DateTimeField(blank=True, default=now)
 

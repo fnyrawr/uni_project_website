@@ -23,8 +23,6 @@ def leaderboard_list(request):
         playername = data['playername']
         entries_found = Leaderboard.objects.filter(mapname__contains=mapname).order_by('playtime')
 
-        print(mapname)
-
         if playername:
             entries_found = entries_found.filter(playername__contains=playername)
         if data['sortby'] == 'PN':

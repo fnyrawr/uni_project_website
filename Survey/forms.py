@@ -1,5 +1,5 @@
 from django import forms
-from .models import Survey
+from .models import Survey, Question
 
 
 class SurveyForm(forms.ModelForm):
@@ -13,5 +13,11 @@ class SurveyForm(forms.ModelForm):
 
 class QuestionForm(forms.ModelForm):
     class Meta:
-        model = Survey
+        model = Question
         fields = ['category', 'question', 'timestamp']
+
+
+class QuestionSearchForm(forms.ModelForm):
+    class Meta:
+        model = Question
+        fields = ['category']

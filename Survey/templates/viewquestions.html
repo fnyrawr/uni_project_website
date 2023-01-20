@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}CapybaraStudios - Questions{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h3 class="orange-text text-darken-1">Questions</h3>
+
+        {% if user.is_authenticated %}
+            <div class="row">
+                <div class="col s6">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="card-content">
+                            <input type="hidden" name="sortby" value="PT" maxlength="0">
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <select name="category" id="category">
+                                        <option value="ProjectManagement" {% if data.category == 'ProjectManagement' %}selected{% endif %}>Project Management</option>
+                                        <option value="Mechanics" {% if data.category == 'Mechanics' %}selected{% endif %}>Mechanics</option>
+                                        <option value="Multiplayer" {% if data.category == 'Multiplayer' %}selected{% endif %}>Multiplayer</option>
+                                        <option value="AssetsUIAudio" {% if data.category == 'AssetsUIAudio' %}selected{% endif %}>Assets UI Audio</option>
+                                        <option value="Website" {% if data.category == 'Website' %}selected{% endif %}>Website</option>
+                                    </select>
+                                    <label>Category</label>
+                                </div>
+                                <div class="input-field col s3 grey-text text-lighten-1">
+                                    <button class="waves-effect waves-light btn-flat orange darken-1 black-text" type="submit"><i class="material-icons left">search</i>Find</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                {% if search %}
+                    <h5>Search results</h5>
+                    {% for question in questions_found %}
+                        <div class="col s8">
+                            <div class="card sticky-action black grey-text text-lighten-1 large">
+                                <div class="card-content row">
+                                    <h5 class="orange-text text-darken-1">{{ question.category }} #{{ question.id }}</h5>
+                                    <span class="grey-text text-lighten-1">{{ question.question }}</span><br>
+                                    <a class="orange-text text-darken-1 right" href="{% url 'deletequestion' question.id %}">{{ question.timestamp|date:"d.m.Y H:i" }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    {% for question in all_questions %}
+                        <div class="col s8">
+                            <div class="card sticky-action black grey-text text-lighten-1 large">
+                                <div class="card-content row">
+                                    <h5 class="orange-text text-darken-1">{{ question.category }} #{{ question.id }}</h5>
+                                    <span class="grey-text text-lighten-1">{{ question.question }}</span><br>
+                                    <a class="orange-text text-darken-1 right" href="{% url 'deletequestion' question.id %}">{{ question.timestamp|date:"d.m.Y H:i" }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    {% else %}
+        <div>
+            <p class="grey-text text-lighten-1">We will discuss your questions at the end of the presentation.</p>
+        </div>
+    {% endif %}
+{% endblock %}

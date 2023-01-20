@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}CapybaraStudios - Write a comment{% endblock %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="card black">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="card-content">
+                    <h4 class="orange-text text-darken-1"><i class="material-icons">chat_bubble</i> Write a question to us</h4>
+                    <p>If you have any questions regarding our project feel free to note down your question. We will answer everything at the end of our presentation. Please don't forget to set a category as we will group questions by topic.</p>
+                    <div class="row">
+                        <div class="input-field col s4">
+                            <select name="category" id="category">
+                                <option value="ProjectManagement">Project Management</option>
+                                <option value="Mechanics">Mechanics</option>
+                                <option value="Multiplayer">Multiplayer</option>
+                                <option value="AssetsUIAudio">Assets UI Audio</option>
+                                <option value="Website">Website</option>
+                            </select>
+                            <label>Category</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="question">Question</label>
+                            <textarea name="question" class="materialize-textarea grey-text text-lighten-1" cols="40" rows="10" id="question"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-action orange darken-1">
+                    <button type="submit" class="waves-effect waves-light btn-flat white-text"><i class="material-icons left">send</i>Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
