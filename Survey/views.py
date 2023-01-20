@@ -60,7 +60,6 @@ class QuestionDeleteView(DeleteView):
         question = Question.objects.get(id=question_id)
         category = question.category
         question.delete()
-        print(category)
         all_questions = Question.objects.filter(category__contains=category).order_by('timestamp')
         context = {'all_questions': all_questions,
                    'questions_found': None,
@@ -68,5 +67,4 @@ class QuestionDeleteView(DeleteView):
                    'form': QuestionSearchForm,
                    'data': None,
                    }
-        # return('viewquestions')
         return render(request, 'viewquestions.html', context)

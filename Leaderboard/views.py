@@ -60,11 +60,22 @@ class LeaderboardView(viewsets.ModelViewSet):
 class LeaderboardDeleteView(DeleteView):
     model = Leaderboard
     context_object_name = 'that_one_entry'
-    template_name = 'leaderboard-delete.html'
     success_url = reverse_lazy('leaderboard-list')
+
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
 
     def post(self, request, **kwargs):
         entry_id = kwargs['pk']
         entry = Leaderboard.objects.get(id=entry_id)
+        mapname = entry.mapname
         entry.delete()
-        return redirect('leaderboard-list')
+        data = {'mapname': mapname, 'playername': None, 'sortby': None}
+        all_entries = Leaderboard.objects.filter(mapname__contains=mapname).order_by('playtime')
+        context = {'all_entries': all_entries,
+                   'entries_found': None,
+                   'search': False,
+                   'form': SearchForm,
+                   'data': data,
+                   }
+        return render(request, 'leaderboard-list.html', context)
