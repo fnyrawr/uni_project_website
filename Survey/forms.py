@@ -17,6 +17,12 @@ class QuestionForm(forms.ModelForm):
         fields = ['category', 'question', 'timestamp']
 
 
+class SurveySearchForm(forms.ModelForm):
+    class Meta:
+        model = Survey
+        fields = ['name', 'review', 'wishes']
+
+
 class QuestionSearchForm(forms.ModelForm):
     class Meta:
         model = Question

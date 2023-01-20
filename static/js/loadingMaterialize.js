@@ -12,5 +12,5 @@ $(document).ready(function(){
         indicators: true
     });
     $('.fixed-action-btn').floatingActionButton();
-    $('.tooltipped').tooltip();
+    var elems = document.querySelectorAll('.fixed-action-btn');
 });

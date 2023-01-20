@@ -46,7 +46,7 @@ def leaderboard_list(request):
                'form': searchForm,
                'data': data,
                }
-    return render(request, 'leaderboard-list.html', context)
+    return render(request, 'leaderboard.html', context)
 
 
 class LeaderboardView(viewsets.ModelViewSet):
@@ -78,4 +78,4 @@ class LeaderboardDeleteView(DeleteView):
                    'form': SearchForm,
                    'data': data,
                    }
-        return render(request, 'leaderboard-list.html', context)
+        return render(request, 'leaderboard.html', context)

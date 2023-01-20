@@ -5,33 +5,34 @@
 
 {% block content %}
     <div class="container">
+        <br><br><br>
         <div class="row">
-            <ul class="collapsible popout col s12 m12">
-                <li class="active">
-                    <div class="collapsible-header orange darken-1"><i class="material-icons">chat_bubble</i><span><b>{{ that_one_blogpost.title }}</b></span></div>
-                    <div class="collapsible-body black grey-text text-lighten-1">
-                        <p class="grey-text text-lighten-1">{{ that_one_blogpost.content }}</p><br>
-                        <span class="orange-text text-darken-1 right"><b class="grey-text text-lighten-1">Posted by</b> {{ that_one_blogpost.creator }}</span><br>
-                        <span class="orange-text text-darken-1 right">{{ that_one_blogpost.timestamp|date:"d.m.Y H:i" }}</span>
+            <div class="card grey darken-4 col s12 m12">
+                <div class="card-content">
+                <div class="card-title orange-text text-darken-1"><i class="material-icons left">chat_bubble</i><span><b>{{ that_one_blogpost.title }}</b></span></div>
+                    <p class="grey-text text-lighten-1">{{ that_one_blogpost.content }}</p><br>
 
-                        <div class="row">
-                            {% for image in blogpost_images %}
-                                <div class="col s3">
-                                    <img class="materialboxed" src="{{ image.image.url }}" style="max-width: 100%; max-height: 250px"><br>
-                                </div>
-                            {% endfor %}
-                        </div>
+                    <div class="row">
+                        {% for image in blogpost_images %}
+                            <div class="col s3">
+                                <img class="materialboxed" src="{{ image.image.url }}" style="max-width: 100%; max-height: 250px"><br>
+                            </div>
+                        {% endfor %}
+                    </div>
 
-                        {% if user.is_authenticated %}
-                            {% if is_authorized %}
-                                <br><br>
+                    <span class="orange-text text-darken-1 right"><b class="grey-text text-lighten-1">Posted by</b> {{ that_one_blogpost.creator }}</span><br>
+                    <span class="orange-text text-darken-1 right">{{ that_one_blogpost.timestamp|date:"d.m.Y H:i" }}</span>
+
+                    {% if user.is_authenticated %}
+                        {% if is_authorized %}
+                            <div class="card-action">
                                 <a class="waves-effect btn btn orange darken-1 black-text" href="{% url 'blogpost-edit' that_one_blogpost.id %}"><i class="material-icons left">edit</i>Edit Blogpost</a>
                                 <a class="waves-effect btn white orange-text text-darken-1" href="{% url 'blogpost-delete' that_one_blogpost.id %}"><i class="material-icons left">delete</i>Delete Blogpost</a>
-                                {% endif %}
-                        {% endif %}
-                    </div>
-                </li>
-            </ul>
+                            </div>
+                            {% endif %}
+                    {% endif %}
+                </div>
+            </div>
             <a class="waves-effect btn orange darken-1 black-text" href="{% url 'blogpost-list' %}"><i class="material-icons left">arrow_back</i>Back to Blogposts</a>
         </div>
     </div>

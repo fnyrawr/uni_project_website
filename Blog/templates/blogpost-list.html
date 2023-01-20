@@ -12,7 +12,7 @@
                 <ul class="collapsible popout">
                     <li class="=active">
                         <div class="collapsible-header orange darken-1"><i class="material-icons">search</i><span><b>Blogpost Search</b></span></div>
-                        <div class="collapsible-body black grey-text text-lighten-1">
+                        <div class="collapsible-body grey darken-4 grey-text text-lighten-1">
                             <form method="POST">
                                 {% csrf_token %}
                                 <div class="card-content">
@@ -46,8 +46,8 @@
                 <h5>Search results</h5>
                 {% for blogpost in blogposts_found %}
                     <div class="col s4">
-                        <div class="card sticky-action black grey-text text-lighten-1 large">
-                            <div class="card-image waves-effect waves-block waves-light" style="height: 500px;">
+                        <div class="card sticky-action grey darken-4 grey-text text-lighten-1">
+                            <div class="card-image waves-effect waves-block waves-light" style="height: 250px;">
                                 {% with p_image=blogpost.first_image %}
                                     {% if p_image %}
                                         <a href="{{ blogpost.id }}/"><img src="{{ p_image.image.url }}" alt="BlogpostImage" style="width: 100%; height: auto"></a>
@@ -69,8 +69,8 @@
             {% else %}
                 {% for blogpost in all_blogposts %}
                     <div class="col s4">
-                        <div class="card sticky-action black grey-text text-lighten-1 large">
-                            <div class="card-image waves-effect waves-block waves-light" style="height: 500px;">
+                        <div class="card sticky-action grey darken-4 grey-text text-lighten-1">
+                            <div class="card-image waves-effect waves-block waves-light" style="height: 250px;">
                                 {% with p_image=blogpost.first_image %}
                                     {% if p_image %}
                                         <a href="{{ blogpost.id }}/"><img src="{{ p_image.image.url }}" alt="BlogpostImage" style="width: 100%; height: auto"></a>
