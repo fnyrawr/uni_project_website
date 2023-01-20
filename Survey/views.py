@@ -10,7 +10,7 @@ def question_list(request):
     questions_found = None
     search = False
     searchForm = QuestionSearchForm
-    category = 'Project & Management'
+    category = 'Project'
     data = None
     if request.method == "POST":
         search = True
@@ -38,6 +38,7 @@ class QuestionCreateView(CreateView):
 
     def post(self, request):
         form = self.form_class(request.POST, request.FILES)
+        print(request.POST.get('category'))
         if form.is_valid():
             question = form.save()
 
@@ -49,12 +50,23 @@ class QuestionCreateView(CreateView):
 
 class QuestionDeleteView(DeleteView):
     model = Question
-    context_object_name = 'that_one_entry'
-    template_name = 'deletequestion.html'
     success_url = reverse_lazy('viewquestions')
+
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
 
     def post(self, request, **kwargs):
         question_id = kwargs['pk']
         question = Question.objects.get(id=question_id)
+        category = question.category
         question.delete()
-        return redirect('viewquestions')
+        print(category)
+        all_questions = Question.objects.filter(category__contains=category).order_by('timestamp')
+        context = {'all_questions': all_questions,
+                   'questions_found': None,
+                   'search': False,
+                   'form': QuestionSearchForm,
+                   'data': None,
+                   }
+        # return('viewquestions')
+        return render(request, 'viewquestions.html', context)

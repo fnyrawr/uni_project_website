@@ -17,10 +17,10 @@
                             <div class="row">
                                 <div class="input-field col s6">
                                     <select name="category" id="category">
-                                        <option value="ProjectManagement" {% if data.category == 'ProjectManagement' %}selected{% endif %}>Project Management</option>
+                                        <option value="Project" {% if data.category == 'Project' %}selected{% endif %}>Project Management</option>
                                         <option value="Mechanics" {% if data.category == 'Mechanics' %}selected{% endif %}>Mechanics</option>
                                         <option value="Multiplayer" {% if data.category == 'Multiplayer' %}selected{% endif %}>Multiplayer</option>
-                                        <option value="AssetsUIAudio" {% if data.category == 'AssetsUIAudio' %}selected{% endif %}>Assets UI Audio</option>
+                                        <option value="Assets" {% if data.category == 'Assets' %}selected{% endif %}>Assets UI Audio</option>
                                         <option value="Website" {% if data.category == 'Website' %}selected{% endif %}>Website</option>
                                     </select>
                                     <label>Category</label>
@@ -34,14 +34,14 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="container row">
                 {% if search %}
                     <h5>Search results</h5>
                     {% for question in questions_found %}
-                        <div class="col s8">
-                            <div class="card sticky-action black grey-text text-lighten-1 large">
+                        <div class="col s12">
+                            <div class="card sticky-action grey darken-4 grey-text text-lighten-1">
                                 <div class="card-content row">
-                                    <h5 class="orange-text text-darken-1">{{ question.category }} #{{ question.id }}</h5>
+                                    <span class="card-title orange-text text-darken-1">{{ question.category }} #{{ question.id }}</span>
                                     <span class="grey-text text-lighten-1">{{ question.question }}</span><br>
                                     <a class="orange-text text-darken-1 right" href="{% url 'deletequestion' question.id %}">{{ question.timestamp|date:"d.m.Y H:i" }}</a>
                                 </div>
@@ -50,10 +50,10 @@
                     {% endfor %}
                 {% else %}
                     {% for question in all_questions %}
-                        <div class="col s8">
-                            <div class="card sticky-action black grey-text text-lighten-1 large">
+                        <div class="col s12">
+                            <div class="card sticky-action grey darken-4 grey-text text-lighten-1">
                                 <div class="card-content row">
-                                    <h5 class="orange-text text-darken-1">{{ question.category }} #{{ question.id }}</h5>
+                                    <span class="card-title orange-text text-darken-1">{{ question.category }} #{{ question.id }}</span>
                                     <span class="grey-text text-lighten-1">{{ question.question }}</span><br>
                                     <a class="orange-text text-darken-1 right" href="{% url 'deletequestion' question.id %}">{{ question.timestamp|date:"d.m.Y H:i" }}</a>
                                 </div>
