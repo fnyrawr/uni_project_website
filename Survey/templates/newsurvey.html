@@ -1,10 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block title %}CapybaraStudios - Survey{% endblock %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <br>
+        <div class="card grey darken-4">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="card-content">
+                    <span class="card-title orange-text text-darken-1"><i class="material-icons">trending_up</i> Survey</span>
+                    <span class="grey-text text-lighten-1">We would like to know your opinion on our project. Please fill out our form below. We will review the statistics in a later process.</span><br>
+                    <div class="row">
+                        <div class="input-field col s8">
+                            <select name="gameidea" id="gameidea" required>
+                                <option class="grey-text text-lighten-1" value="" disabled selected>Choose Rating for Gameidea</option>
+                                <option value="1">1 - Meh</option>
+                                <option value="2">2 - Lame</option>
+                                <option value="3">3 - Mid</option>
+                                <option value="4">4 - Good</option>
+                                <option value="5">5 - Awesome</option>
+                            </select>
+                            <label for="gameidea">Gameidea</label>
+                            <span class="helper-text grey-text text-lighten-1"><b class="orange-text text-darken-1">Gameidea</b> How would you rate our game idea as a whole?</span>
+                        </div>
+                        <div class="input-field col s8">
+                            <select name="gamedesign" id="gamedesign" required>
+                                <option class="grey-text text-lighten-1" value="" disabled selected>Choose Rating for Gamedesign</option>
+                                <option value="1">1 - Meh</option>
+                                <option value="2">2 - Lame</option>
+                                <option value="3">3 - Mid</option>
+                                <option value="4">4 - Good</option>
+                                <option value="5">5 - Awesome</option>
+                            </select>
+                            <label for="gameidea">Gamedesign</label>
+                            <span class="helper-text grey-text text-lighten-1"><b class="orange-text text-darken-1">Gamedesign</b> How would you rate our game design? Like assets, maps, UI, music and settings</span>
+                        </div>
+                        <div class="input-field col s8">
+                            <select name="gameplay" id="gameplay" required>
+                                <option class="grey-text text-lighten-1" value="" disabled selected>Choose Rating for Gameplay</option>
+                                <option value="1">1 - Meh</option>
+                                <option value="2">2 - Lame</option>
+                                <option value="3">3 - Mid</option>
+                                <option value="4">4 - Good</option>
+                                <option value="5">5 - Awesome</option>
+                            </select>
+                            <label for="gameplay">Gameplay</label>
+                            <span class="helper-text grey-text text-lighten-1"><b class="orange-text text-darken-1">Gameplay</b> How would you rate the gameplay? Remember it's even more fun if you play it yourself, not just watch us playing.</span>
+                        </div>
+                        <div class="input-field col s8">
+                            <select name="website" id="website" required>
+                                <option class="grey-text text-lighten-1" value="" disabled selected>Choose Rating for Website</option>
+                                <option value="1">1 - Meh</option>
+                                <option value="2">2 - Lame</option>
+                                <option value="3">3 - Mid</option>
+                                <option value="4">4 - Good</option>
+                                <option value="5">5 - Awesome</option>
+                            </select>
+                            <label for="website">Website</label>
+                            <span class="helper-text grey-text text-lighten-1"><b class="orange-text text-darken-1">Website</b> How do you like our Project Website? It was originally not planned though we think it makes the presentation more interactive.</span>
+                        </div>
+
+                        <div class="input-field col s8">
+                            <label for="review">Review</label>
+                            <textarea name="review" class="materialize-textarea grey-text text-lighten-1" cols="40" rows="10" id="review" required></textarea>
+                            <span class="helper-text grey-text text-lighten-1" data-error="wrong" data-success="right"><b class="orange-text text-darken-1">Review</b> Please review our game and/or our presentation in words.</span>
+                        </div>
+                        <div class="input-field col s8">
+                            <label for="wishes">Wishes</label>
+                            <textarea name="wishes" class="materialize-textarea grey-text text-lighten-1" cols="40" rows="10" id="review"></textarea>
+                            <span class="helper-text grey-text text-lighten-1" data-error="wrong" data-success="right"><b class="orange-text text-darken-1">Wishes</b> If you have any wishes like new features, etc. feel free to tell us. This answer is optional.</span>
+                        </div>
+                        <div class="input-field col s8">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" autocapitalize="none" maxlength="15" required id="name" class="grey-text text-lighten-1">
+                            <span class="helper-text grey-text text-lighten-1" data-error="wrong" data-success="right"><b class="orange-text text-darken-1">Your name</b> Tell us who you are. Surname is enough though.</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="waves-effect waves-light btn-flat orange darken-1 black-text"><i class="material-icons left">send</i>Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

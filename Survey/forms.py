@@ -5,7 +5,7 @@ from .models import Survey, Question
 class SurveyForm(forms.ModelForm):
     class Meta:
         model = Survey
-        fields = ['name', 'review', 'wishes', 'gameidea', 'gamedesign', 'gameplay', 'websiteDesign']
+        fields = ['name', 'review', 'wishes', 'gameidea', 'gamedesign', 'gameplay', 'website']
         widgets = {
             'timestamp': forms.HiddenInput(),
         }

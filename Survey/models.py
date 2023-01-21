@@ -2,40 +2,14 @@ from django.db import models
 from django.utils.timezone import now
 
 
-RATING_CHOICES = [
-        ('1', 'Meh'),
-        ('2', 'Lame'),
-        ('3', 'Mid'),
-        ('4', 'Good'),
-        ('5', 'Awesome'),
-    ]
-
-
 class Survey(models.Model):
     name = models.CharField(max_length=50)
     review = models.TextField()
     wishes = models.TextField(blank=True)
-    gameidea = models.CharField(
-        max_length=1,
-        choices=RATING_CHOICES,
-        default=3,
-    )
-    gamedesign = models.CharField(
-        max_length=1,
-        choices=RATING_CHOICES,
-        default=3,
-    )
-    gameplay = models.CharField(
-        max_length=1,
-        choices=RATING_CHOICES,
-        default=3,
-        blank=True
-    )
-    websiteDesign = models.CharField(
-        max_length=1,
-        choices=RATING_CHOICES,
-        default=3,
-    )
+    gameidea = models.CharField(max_length=15)
+    gamedesign = models.CharField(max_length=15)
+    gameplay = models.CharField(max_length=15)
+    website = models.CharField(max_length=15)
     timestamp = models.DateTimeField(blank=True, default=now)
 
     class Meta:
