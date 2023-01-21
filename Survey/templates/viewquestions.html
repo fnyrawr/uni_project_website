@@ -42,7 +42,7 @@
                         <div class="col s12">
                             <div class="card sticky-action grey darken-4 grey-text text-lighten-1">
                                 <div class="card-content row">
-                                    <span class="card-title orange-text text-darken-1">{{ question.category }} #{{ question.id }}</span>
+                                    <span class="card-title orange-text text-darken-1"><i class="material-icons left">chat_bubble</i>{{ question.category }} #{{ question.id }}</span>
                                     <span class="grey-text text-lighten-1">{{ question.question }}</span><br>
                                     <a class="orange-text text-darken-1 right" href="{% url 'deletequestion' question.id %}">{{ question.timestamp|date:"d.m.Y H:i" }}</a>
                                 </div>
@@ -54,7 +54,7 @@
                         <div class="col s12">
                             <div class="card sticky-action grey darken-4 grey-text text-lighten-1">
                                 <div class="card-content row">
-                                    <span class="card-title orange-text text-darken-1">{{ question.category }} #{{ question.id }}</span>
+                                    <span class="card-title orange-text text-darken-1"><i class="material-icons left">chat_bubble</i>{{ question.category }} #{{ question.id }}</span>
                                     <span class="grey-text text-lighten-1">{{ question.question }}</span><br>
                                     <a class="orange-text text-darken-1 right" href="{% url 'deletequestion' question.id %}">{{ question.timestamp|date:"d.m.Y H:i" }}</a>
                                 </div>

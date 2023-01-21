@@ -23,9 +23,13 @@
   - [x] View users `@Florian`
   - [x] View Questions `@Florian`
   - [ ] View Surveys `@Florian`
-  - [ ] Diagrams for Surveys `@Florian`
+    - [x] View Survey Entries `@Florian`
+    - [ ] View Survey average ratings `@Florian`
+      - [ ] Diagrams with plotly `@Florian`
+    - [ ] View only reviews `@Florian`
+    - [ ] View only wishes `@Florian`
   - [ ] Diagrams for Leaderboard Scores & Statistics `@Florian`
-- [ ] Fill page with contents `@Florian (Design and Page)` `@Zainab (Text, supporting)` `@everyone (Screenshots and Previews)`
+- [ ] Fill page with contents `@Florian (Design and Page)` `@Zainab (Text, supporting)`
 - [ ] Test website functionalities `@everyone`
 
 ##### Needed commands to get page running
