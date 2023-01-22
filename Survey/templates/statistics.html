@@ -1,10 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block title %}CapybaraStudios - Statistics{% endblock %}
+
+{% block content %}
+    <br>
+    <div class="container">
+        <h3 class="orange-text text-darken-1">Statistics</h3>
+        <br>
+        {% if user.is_authenticated %}
+            <div class="row">
+                <div class="col s12">
+                    <img src='data:image/png;base64,{{ average_ratings_chart }}' height="350px">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    <img src='data:image/png;base64,{{ gameidea_ratings_chart }}' height="350px">
+                </div>
+                <div class="col s6">
+                    <img src='data:image/png;base64,{{ gamedesign_ratings_chart }}' height="350px">
+                </div>
+                <div class="col s6">
+                    <img src='data:image/png;base64,{{ gameplay_ratings_chart }}' height="350px">
+                </div>
+                <div class="col s6">
+                    <img src='data:image/png;base64,{{ website_ratings_chart }}' height="350px">
+                </div>
+            </div>
+        {% else %}
+            <div class="container">
+                <p class="grey-text text-lighten-1">We will discuss the survey at the end of the presentation.</p>
+            </div>
+        {% endif %}
+    </div>
+    <div class="parallax-container">
+        <div class="parallax"><img src="{% static '/images/Nightsky.png' %}"></div>
+    </div>
+{% endblock %}

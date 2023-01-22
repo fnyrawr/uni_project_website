@@ -13,22 +13,22 @@
   - [x] Questions `@Florian`
   - [x] Surveys `@Florian`
 - [x] Implement Blog entry functionalities `@Florian`
-- [ ] Implement Leaderboard functionalities
+- [x] Implement Leaderboard functionalities
   - [x] Page (POST and GET) `@Florian`
   - [x] Creating Score entries in Unity `@Adrian`
   - [x] Sending data between Unity and Page `@Adrian`
   - [x] Sorting data in Leaderboard `@Florian`
   - [x] Admins can delete entries `@Florian`
-- [ ] Implement Adminuser views
+- [x] Implement Adminuser views
   - [x] View users `@Florian`
   - [x] View Questions `@Florian`
   - [x] View Surveys `@Florian`
     - [x] View Survey Entries `@Florian`
     - [x] View Survey average ratings `@Florian`
       - [x] Diagrams with matplotlib `@Florian`
-    - [ ] View only reviews `@Florian`
-    - [ ] View only wishes `@Florian`
-  - [ ] Diagrams for Leaderboard Scores & Statistics `@Florian`
+    - [x] View only reviews `@Florian`
+    - [x] View only wishes `@Florian`
+- [ ] Diagrams for Leaderboard Scores & Statistics `@Florian`
 - [ ] Fill page with contents `@Florian (Design and Page)` `@Zainab (Text, supporting)`
 - [ ] Test website functionalities `@everyone`
 

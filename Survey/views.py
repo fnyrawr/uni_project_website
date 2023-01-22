@@ -51,6 +51,7 @@ def reviews_wishes_list(request):
 
 
 def statistics_diagrams(request):
+    global gameidea_b64, gamedesign_b64, gameplay_b64, website_b64
     all_surveys = Survey.objects.order_by('timestamp')
 
     # create charts for ratings grouped by category
@@ -58,35 +59,108 @@ def statistics_diagrams(request):
     avg_gamedesign = Survey.objects.aggregate(Avg('gamedesign')).get('gamedesign__avg')
     avg_gameplay = Survey.objects.aggregate(Avg('gameplay')).get('gameplay__avg')
     avg_website = Survey.objects.aggregate(Avg('website')).get('website__avg')
-    fig, ax = plt.subplots()
+    fig1, ax1 = plt.subplots()
     labels = ['Gameidea', 'Gamedesign', 'Gameplay', 'Website']
     ratings = [avg_gameidea, avg_gamedesign, avg_gameplay, avg_website]
-    colors = ['#EF6C00', '#F57C00', '#FB8C00', '#FF9800']
-    ax.barh(labels, ratings, color=colors, zorder=3)
+    colors = ['#FF9800', '#FB8C00', '#F57C00', '#EF6C00']
+    ax1.barh(labels, ratings, color=colors, zorder=3)
     sns.despine(left=True, bottom=True)
-    ax.tick_params(axis='x', which='both', bottom=False)
-    ax.tick_params(axis='y', which='both', left=False)
-    ax.xaxis.label.set_color('#BDBDBD')
-    ax.tick_params(colors='#BDBDBD', which='both')
-    ax.set_xlabel('Average rating')
-    fig.suptitle('Average ratings by keyword', color='#FB8C00', fontweight='bold')
-    for c in ax.containers:
+    ax1.tick_params(axis='x', which='both', bottom=False)
+    ax1.tick_params(axis='y', which='both', left=False)
+    ax1.xaxis.label.set_color('#BDBDBD')
+    ax1.tick_params(colors='#BDBDBD', which='both')
+    ax1.set_xlabel('Average rating')
+    fig1.suptitle('Average ratings by keyword', color='#FB8C00', fontweight='bold')
+    for c in ax1.containers:
         # customize the label to account for cases when there might not be a bar section
         labels = [f'{w:.2f}' if (w := v.get_width()) > 0.49 else '' for v in c]
         # set the bar label
-        ax.bar_label(c, labels=labels, label_type='center', color='white', padding=3, fontsize=10)
+        ax1.bar_label(c, labels=labels, label_type='center', color='white', padding=3, fontsize=10)
     plt.grid(axis='x', which='both', color='#616161', linewidth=1, zorder=0)
-    ax.set_facecolor('#212121')
-    fig.set_facecolor('black')
-    fig.tight_layout()
-    flike = io.BytesIO()
-    fig.savefig(flike)
-    avg_b64 = base64.b64encode(flike.getvalue()).decode()
+    plt.gca().invert_yaxis()
+    ax1.set_facecolor('#212121')
+    fig1.set_facecolor('black')
+    fig1.tight_layout()
+    flike1 = io.BytesIO()
+    fig1.savefig(flike1)
+    avg_b64 = base64.b64encode(flike1.getvalue()).decode()
+
+    # create charts for ratings grouped by category
+    for i in range(0, 4):
+        fig2, ax2 = plt.subplots()
+        labels = ['1 - Meh', '2 - Lame', '3 - Mid', '4 - Good', '5 - Awesome']
+        if i == 0:
+            ratings = [
+                Survey.objects.filter(gameidea__contains='1').count(),
+                Survey.objects.filter(gameidea__contains='2').count(),
+                Survey.objects.filter(gameidea__contains='3').count(),
+                Survey.objects.filter(gameidea__contains='4').count(),
+                Survey.objects.filter(gameidea__contains='5').count()
+            ]
+            fig2.suptitle('Ratings for Gameidea', color='#FB8C00', fontweight='bold')
+        elif i == 1:
+            ratings = [
+                Survey.objects.filter(gamedesign__contains='1').count(),
+                Survey.objects.filter(gamedesign__contains='2').count(),
+                Survey.objects.filter(gamedesign__contains='3').count(),
+                Survey.objects.filter(gamedesign__contains='4').count(),
+                Survey.objects.filter(gamedesign__contains='5').count()
+            ]
+            fig2.suptitle('Ratings for Gamedesign', color='#FB8C00', fontweight='bold')
+        elif i == 2:
+            ratings = [
+                Survey.objects.filter(gameplay__contains='1').count(),
+                Survey.objects.filter(gameplay__contains='2').count(),
+                Survey.objects.filter(gameplay__contains='3').count(),
+                Survey.objects.filter(gameplay__contains='4').count(),
+                Survey.objects.filter(gameplay__contains='5').count()
+            ]
+            fig2.suptitle('Ratings for Gameplay', color='#FB8C00', fontweight='bold')
+        else:
+            ratings = [
+                Survey.objects.filter(website__contains='1').count(),
+                Survey.objects.filter(website__contains='2').count(),
+                Survey.objects.filter(website__contains='3').count(),
+                Survey.objects.filter(website__contains='4').count(),
+                Survey.objects.filter(website__contains='5').count()
+            ]
+            fig2.suptitle('Ratings for Website', color='#FB8C00', fontweight='bold')
+        colors = ['#EF6C00', '#F57C00', '#FB8C00', '#FF9800']
+        ax2.barh(labels, ratings, color=colors, zorder=3)
+        sns.despine(left=True, bottom=True)
+        ax2.tick_params(axis='x', which='both', bottom=False)
+        ax2.tick_params(axis='y', which='both', left=False)
+        ax2.xaxis.label.set_color('#BDBDBD')
+        ax2.tick_params(colors='#BDBDBD', which='both')
+        ax2.set_xlabel('Count votes')
+        for c in ax2.containers:
+            # customize the label to account for cases when there might not be a bar section
+            labels = [f'{w:.0f}' if (w := v.get_width()) > 0.49 else '' for v in c]
+            # set the bar label
+            ax2.bar_label(c, labels=labels, label_type='center', color='white', padding=3, fontsize=10)
+        plt.grid(axis='x', which='both', color='#616161', linewidth=1, zorder=0)
+        ax2.set_facecolor('#212121')
+        fig2.set_facecolor('black')
+        fig2.tight_layout()
+        flike2 = io.BytesIO()
+        fig2.savefig(flike2)
+        if i == 0:
+            gameidea_b64 = base64.b64encode(flike2.getvalue()).decode()
+        elif i == 1:
+            gamedesign_b64 = base64.b64encode(flike2.getvalue()).decode()
+        elif i == 2:
+            gameplay_b64 = base64.b64encode(flike2.getvalue()).decode()
+        else:
+            website_b64 = base64.b64encode(flike2.getvalue()).decode()
 
     context = {'all_surveys': all_surveys,
                'average_ratings_chart': avg_b64,
+               'gameidea_ratings_chart': gameidea_b64,
+               'gamedesign_ratings_chart': gamedesign_b64,
+               'gameplay_ratings_chart': gameplay_b64,
+               'website_ratings_chart': website_b64,
                }
-    return render(request, 'viewsurveys.html', context)
+    return render(request, 'statistics.html', context)
 
 
 class SurveyCreateView(CreateView):
