@@ -4,42 +4,45 @@
 {% block title %}CapybaraStudios - Blogposts{% endblock %}
 
 {% block content %}
+    <br><br><br>
     <div class="container">
-        <h3 class="orange-text text-darken-1">Blogpost list</h3>
-
         <div class="row">
-            <div class="col s6">
-                <ul class="collapsible popout">
-                    <li class="=active">
-                        <div class="collapsible-header orange darken-1"><i class="material-icons">search</i><span><b>Blogpost Search</b></span></div>
-                        <div class="collapsible-body grey darken-4 grey-text text-lighten-1">
-                            <form method="POST">
-                                {% csrf_token %}
-                                <div class="card-content">
-                                    <div class="row">
-                                        <div class="input-field col s6 grey-text">
-                                            <label for="id_title">Title</label>
-                                            <input type="text" name="title" maxlength="100" id="id_title" class="grey-text text-lighten-1">
-                                        </div>
-                                        <div class="input-field col s6 grey-text">
-                                            <label for="id_content">Content</label>
-                                            <textarea name="content" class="materialize-textarea grey-text text-lighten-1" cols="40" rows="10" id="id_content"></textarea>
-                                        </div>
-                                    </div>
-                                    <button class="waves-effect btn orange darken-1 black-text" type="submit"><i class="material-icons left">search</i>Search</button>
+            <div class="card grey darken-4 col s10">
+                <div class="card-content">
+                    <<div class="card-title orange-text text-darken-1"><i class="material-icons left">newspaper</i><span><b>Blogposts</b></span></div>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="card-content">
+                            <div class="row">
+                                <div class="input-field col s4 grey-text">
+                                    <label for="id_title">Title</label>
+                                    <input type="text" name="title" maxlength="100" id="id_title" class="grey-text text-lighten-1">
+                                </div>
+                                <div class="input-field col s4 grey-text">
+                                    <label for="id_content">Content</label>
+                                    <textarea name="content" class="materialize-textarea grey-text text-lighten-1" cols="40" rows="10" id="id_content"></textarea>
+                                </div>
+                                <div class="col s14">
+                                    <button class="waves-effect btn orange darken-1 black-text" type="submit"><i class="material-icons left">search</i>Find</button>
                                     {% if search %}
                                         <a class="waves-effect btn white orange-text text-darken-1" href={% url 'blogpost-list' %}><i class="material-icons left">clear</i>Clear filters</a>
                                     {% endif %}
                                 </div>
-                            </form>
+                                <div class="col s12">
+                                    <span class="new badge orange darken-1 black-text left" data-badge-caption="Blogposts total">{{ all_blogposts.count }}</span>
+                                    {% if search %}
+                                        <span class="new badge orange darken-1 black-text left" data-badge-caption="filtered found">{{ blogposts_found.count }}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% if user.is_authorized %}
+                                <a class="waves-effect btn orange darken-1 black-text" href={% url 'blogpost-create' %}><i class="material-icons left">add</i>Write a Blogpost</a><br><br>
+                            {% endif %}
                         </div>
-                    </li>
-                </ul>
+                    </form>
+                </div>
             </div>
         </div>
-        {% if user.is_authorized %}
-            <a class="waves-effect btn orange darken-1 black-text" href={% url 'blogpost-create' %}><i class="material-icons left">add</i>Write a Blogpost</a><br><br>
-        {% endif %}
 
         <div class="row">
             {% if search %}
@@ -91,4 +94,8 @@
                 {% endfor %}
             {% endif %}
         </div>
+    </div>
+    <div class="parallax-container">
+        <div class="parallax"><img src="{% static '/images/Nightsky.png' %}"></div>
+    </div>
 {% endblock %}

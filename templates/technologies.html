@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}CapybaraStudios - Technologies{% endblock %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="section black">
+            <div class="row container white-text">
+                <h2 class="header orange-text text-darken-1">Technologies Used</h2>
+                <table class="highlight col s12 m4 l4">
+                    <tbody>
+                        <tr>
+                            <td class="orange-text text-darken-1"><b>Unity</b></td>
+                            <td>Game Engine</td>
+                        </tr>
+                        <tr>
+                            <td class="orange-text text-darken-1"><b>C#</b></td>
+                            <td>Code</td>
+                        </tr>
+                        <tr>
+                            <td class="orange-text text-darken-1"><b>Git</b></td>
+                            <td>Version Control System</td>
+                        </tr>
+                        <tr>
+                            <td class="orange-text text-darken-1"><b>Django</b></td>
+                            <td>Website Development</td>
+                        </tr>
+                        <tr>
+                            <td class="orange-text text-darken-1"><b>Jira</b></td>
+                            <td>Projectmanagement</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="col s12 m4 l4">
+                    <img class="materialboxed" src="{% static '/images/technologies.png' %}" width="100%">
+                </div>
+                <table class="highlight col s12 m4 l4">
+                    <tbody>
+                        <tr>
+                            <td class="orange-text text-darken-1"><b>Blender</b></td>
+                            <td>Asset Creation</td>
+                        </tr>
+                        <tr>
+                            <td class="orange-text text-darken-1"><b>Mixamo</b></td>
+                            <td>Animations</td>
+                        </tr>
+                        <tr>
+                            <td class="orange-text text-darken-1"><b>Photoshop</b></td>
+                            <td>Graphics</td>
+                        </tr>
+                        <tr>
+                            <td class="orange-text text-darken-1"><b>FL Studio</b></td>
+                            <td>Music Production</td>
+                        </tr>
+                        <tr>
+                            <td class="orange-text text-darken-1"><b>Discord</b></td>
+                            <td>Communication</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="parallax-container">
+        <div class="parallax"><img src="{% static '/images/Nightsky.png' %}"></div>
+    </div>
+
+{% endblock %}

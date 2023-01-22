@@ -4,16 +4,15 @@
 {% block title %}CapybaraStudios - Surveys{% endblock %}
 
 {% block content %}
+    <br><br><br>
     <div class="container">
-        <h3 class="orange-text text-darken-1">Surveys</h3>
-
         {% if user.is_authenticated %}
             <div class="row">
                 <div class="card col s8 grey darken-4">
                     <form method="POST">
                         {% csrf_token %}
                         <div class="card-content">
-                            <span class="card-title orange-text text-darken-1">Filter by keywords</span>
+                            <div class="card-title orange-text text-darken-1"><i class="material-icons left">trending_up</i><span><b>Surveys</b></span></div>
                             <div class="row">
                                 <div class="input-field col s3">
                                     <label for="name">Name</label>
