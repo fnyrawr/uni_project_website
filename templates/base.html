@@ -23,38 +23,87 @@
 <body>
     <main>
         {% block navbar %}
-            <!-- Dropdown Structure -->
-            <ul id="user-widget" class="dropdown-content">
-                <li><a class="waves-effect waves-light" href="{% url 'userlist' %}"><i class="material-icons left">group</i>View Users</a></li>
-                <li class="divider"></li>
-                <li><a class="waves-effect waves-light" href="{% url 'logout' %}"><i class="material-icons left">logout</i> Logout</a></li>
-            </ul>
-            <ul id="insights-dropdown" class="dropdown-content">
-                <li><a class="waves-effect waves-light" href="{% url 'viewquestions' %}"><i class="material-icons left">chat_bubble</i>View Questions</a></li>
-                <li><a class="waves-effect waves-light" href="{% url 'viewsurveys' %}"><i class="material-icons left">trending_up</i>View Surveys</a></li>
-            </ul>
             <div class="navbar-fixed">
                 <nav>
                     <div class="nav-wrapper orange darken-1">
                         <ul id="nav-categories" class="left">
                             <li><img src="{% static '/images/logo.png' %}" alt="Logo" height="64px"></li>
-                            <li><a class="waves-effect waves-light" href="{% url 'about' %}">About</a></li>
-                            <li><a class="waves-effect waves-light" href="{% url 'howto' %}">How to play</a></li>
-                            <li><a class="waves-effect waves-light" href="{% url 'downloads' %}">Downloads</a></li>
-                            <li><a class="waves-effect waves-light" href="{% url 'blogpost-list' %}">Blog</a></li>
-                            <li><a class="waves-effect waves-light" href="{% url 'leaderboard-list' %}">Leaderboard</a></li>
-                            {% if user.is_authenticated %}<li><a class="waves-effect waves-light dropdown-trigger" data-target="insights-dropdown">Insights<i class="material-icons right">arrow_drop_down</i></a></li>{% endif %}
-                        </ul>
-                        <ul id="login" class="right">
-                            {% if user.is_authenticated %}
-                                <li><a class="waves-effect waves-light dropdown-trigger" data-target="user-widget"><i class="material-icons left">person</i>{{ user.username }}<i class="material-icons right">arrow_drop_down</i></a></li>
-                            {% else %}
-                                <li><a class="waves-effect waves-light" href="{% url 'login' %}"><i class="material-icons left">login</i> Login</a></li>
-                            {% endif %}
+                            <li><a class="waves-effect waves-light"><i class="material-icons sidenav-trigger" data-target="sidenav">menu</i></a></li>
                         </ul>
                     </div>
                 </nav>
             </div>
+            <ul id="sidenav" class="sidenav grey darken-4">
+                <li>
+                    <div class="user-view">
+                        <div class="background">
+                            <img src="{% static '/images/Nightsky.png' %}">
+                        </div>
+                        {% if user.is_authenticated %}
+                            {% if user.profile_picture %}
+                                <img class="circle" src="{{ user.profile_picture.url }}">
+                            {% else %}
+                                <div class="black">
+                                    <img class="circle" src="{% static '/images/Capybara.png' %}">
+                                </div>
+                            {% endif %}
+                            <a><span class="orange-text text-darken-1 name">{{ user }}</span></a>
+                            <a><span class="white-text email">{{ user.email }}</span></a>
+                            <a class="btn-floating halfway-fab waves-effect waves-light orange darken-1" href="{% url 'logout' %}"><i class="material-icons">logout</i></a>
+                        {% else %}
+                            <a><img class="circle" src="{% static '/images/Capybara.png' %}"></a>
+                            <a><span class="orange-text text-darken-1 name">Guest</span></a>
+                            <a><span class="white-text email">watching our presentation</span></a>
+                            <a class="btn-floating halfway-fab waves-effect waves-light orange darken-1" href="{% url 'login' %}"><i class="material-icons">login</i></a>
+                        {% endif %}
+                    </div>
+                </li>
+                <li>
+                    <ul class="collapsible grey-text text-lighten-1">
+                        {% if user.is_authenticated %}
+                            <li>
+                                <div class="collapsible-header"><i class="material-icons orange-text text-darken-1">visibility</i>Insights</div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li><a class="waves-effect waves-light grey-text text-lighten-1" href="{% url 'userlist' %}"><i class="material-icons orange-text text-darken-1">group</i>Userlist</a></li>
+                                        <li><a class="waves-effect waves-light grey-text text-lighten-1" href="{% url 'viewquestions' %}"><i class="material-icons orange-text text-darken-1">chat_bubble</i>Questions</a></li>
+                                        <li><a class="waves-effect waves-light grey-text text-lighten-1" href="{% url 'viewsurveys' %}"><i class="material-icons orange-text text-darken-1">trending_up</i>Surveys</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        {% endif %}
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons orange-text text-darken-1">videogame_asset</i>Game</div>
+                            <div class="collapsible-body grey darken-3">
+                                <ul>
+                                    <li><a class="waves-effect waves-light grey-text text-lighten-1" href="{% url 'about' %}"><i class="material-icons orange-text text-darken-1">info</i>About</a></li>
+                                    <li><a class="waves-effect waves-light grey-text text-lighten-1"><i class="material-icons orange-text text-darken-1">group</i>Our Team</a></li>
+                                    <li><a class="waves-effect waves-light grey-text text-lighten-1" href="{% url 'howto' %}"><i class="material-icons orange-text text-darken-1">help</i>How to play</a></li>
+                                    <li><a class="waves-effect waves-light grey-text text-lighten-1" href="{% url 'downloads' %}"><i class="material-icons orange-text text-darken-1">download</i>Downloads</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons orange-text text-darken-1">co_present</i>Interactive</div>
+                            <div class="collapsible-body grey darken-3">
+                                <ul>
+                                    <li><a class="waves-effect waves-light grey-text text-lighten-1" href="{% url 'newquestion' %}"><i class="material-icons orange-text text-darken-1">chat_bubble</i>Write question</a></li>
+                                    <li><a class="waves-effect waves-light grey-text text-lighten-1" href="{% url 'newsurvey' %}"><i class="material-icons orange-text text-darken-1">trending_up</i>Fill out survey</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons orange-text text-darken-1">flash_on</i>Specials</div>
+                            <div class="collapsible-body grey darken-3">
+                                <ul>
+                                    <li><a class="waves-effect waves-light grey-text text-lighten-1" href="{% url 'blogpost-list' %}"><i class="material-icons orange-text text-darken-1">newspaper</i>Blog</a></li>
+                                    <li><a class="waves-effect waves-light grey-text text-lighten-1" href="{% url 'leaderboard-list' %}"><i class="material-icons orange-text text-darken-1">view_list</i>Leaderboard</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         {% endblock %}
         {% block content %}{% endblock %}
     </main>

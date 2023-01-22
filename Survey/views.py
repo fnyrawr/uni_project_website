@@ -49,7 +49,7 @@ def survey_list(request):
     ax.xaxis.label.set_color('#BDBDBD')
     ax.tick_params(colors='#BDBDBD', which='both')
     ax.set_xlabel('Average rating')
-    fig.suptitle('Average ratings of our work', color='#FB8C00', fontweight='bold')
+    fig.suptitle('Average ratings by keyword', color='#FB8C00', fontweight='bold')
     for c in ax.containers:
         # customize the label to account for cases when there might not be a bar section
         labels = [f'{w:.2f}' if (w := v.get_width()) > 0.49 else '' for v in c]
