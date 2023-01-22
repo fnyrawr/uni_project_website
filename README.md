@@ -36,6 +36,7 @@
 - pip install django
 - pip install djangorestframework
 - pip install Pillow (needed for profile pictures)
+- pip install matplotlib
 - python -m venv ./venv (creating virtual environment)
 - venv\Scripts\activate
 - python manage.py runserver

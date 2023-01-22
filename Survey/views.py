@@ -3,6 +3,11 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView
 from .forms import SurveyForm, SurveySearchForm, QuestionForm, QuestionSearchForm
 from .models import Survey, Question
+import matplotlib
+
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import io, base64
 
 
 def survey_list(request):
@@ -87,11 +92,39 @@ def question_list(request):
     else:
         all_questions = Question.objects.filter(category__contains=category).order_by('timestamp')
 
+    # create chart to display questions per category
+    labels = 'Project\nManagement', 'Mechanics', 'Multiplayer', 'Assets\nUI\nAudio', 'Website'
+    sizes = [
+        Question.objects.filter(category__contains='Project').count(),
+        Question.objects.filter(category__contains='Mechanics').count(),
+        Question.objects.filter(category__contains='Multiplayer').count(),
+        Question.objects.filter(category__contains='Assets').count(),
+        Question.objects.filter(category__contains='Website').count(),
+    ]
+    explode = (0.1, 0, 0, 0, 0)
+    if category == 'Mechanics': explode = (0, 0.1, 0, 0, 0)
+    if category == 'Multiplayer': explode = (0, 0, 0.1, 0, 0)
+    if category == 'Assets': explode = (0, 0, 0, 0.1, 0)
+    if category == 'Website': explode = (0, 0, 0, 0, 0.1)
+    colors = ['#E65100', '#EF6C00', '#F57C00', '#FB8C00', '#FF9800']
+    fig, ax = plt.subplots()
+    fig.set_facecolor('black')
+    ax.pie(sizes, labels=labels, explode=explode, autopct=lambda x: '{:.0f}'.format(x * sum(sizes) / 100),
+           colors=colors, startangle=-270, counterclock=False, pctdistance=0.85, textprops={'color':'#FFFFFF'})
+    centre_circle = plt.Circle((0, 0), 0.70, fc='black')
+    fig = plt.gcf()
+    fig.gca().add_artist(centre_circle)
+    ax.axis('equal')
+    flike = io.BytesIO()
+    fig.savefig(flike)
+    b64 = base64.b64encode(flike.getvalue()).decode()
+
     context = {'all_questions': all_questions,
                'questions_found': questions_found,
                'search': search,
                'form': searchForm,
                'data': data,
+               'chart': b64,
                }
     return render(request, 'viewquestions.html', context)
 
