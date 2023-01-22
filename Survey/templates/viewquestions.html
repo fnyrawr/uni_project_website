@@ -29,6 +29,12 @@
                                 <div class="input-field col s3 grey-text text-lighten-1">
                                     <button class="waves-effect waves-light btn-flat orange darken-1 black-text" type="submit"><i class="material-icons left">search</i>Find</button>
                                 </div>
+                                <div class="col s12">
+                                    <span class="new badge orange darken-1 black-text left" data-badge-caption="Questions total">{{ all_questions.count }}</span>
+                                    {% if search %}
+                                        <span class="new badge orange darken-1 black-text left" data-badge-caption="filtered found">{{ questions_found.count }}</span>
+                                    {% endif %}
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -42,7 +48,10 @@
                         <div class="col s12">
                             <div class="card sticky-action grey darken-4 grey-text text-lighten-1">
                                 <div class="card-content row">
-                                    <span class="card-title orange-text text-darken-1"><i class="material-icons left">chat_bubble</i>{{ question.category }} #{{ question.id }}</span>
+                                    <span class="card-title orange-text text-darken-1">
+                                        <b><i class="material-icons left">chat_bubble</i>Question #{{ question.id }}</b>
+                                        <span class="new badge orange darken-1 black-text" data-badge-caption="{{ question.category }}"><b>Category</b></span>
+                                    </span>
                                     <span class="grey-text text-lighten-1">{{ question.question }}</span><br>
                                     <a class="orange-text text-darken-1 right" href="{% url 'deletequestion' question.id %}">{{ question.timestamp|date:"d.m.Y H:i" }}</a>
                                 </div>
@@ -54,7 +63,10 @@
                         <div class="col s12">
                             <div class="card sticky-action grey darken-4 grey-text text-lighten-1">
                                 <div class="card-content row">
-                                    <span class="card-title orange-text text-darken-1"><i class="material-icons left">chat_bubble</i>{{ question.category }} #{{ question.id }}</span>
+                                    <span class="card-title orange-text text-darken-1">
+                                        <b><i class="material-icons left">chat_bubble</i>Question #{{ question.id }}</b>
+                                        <span class="new badge orange darken-1 black-text" data-badge-caption="{{ question.category }}"><b>Category</b></span>
+                                    </span>
                                     <span class="grey-text text-lighten-1">{{ question.question }}</span><br>
                                     <a class="orange-text text-darken-1 right" href="{% url 'deletequestion' question.id %}">{{ question.timestamp|date:"d.m.Y H:i" }}</a>
                                 </div>

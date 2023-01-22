@@ -30,6 +30,12 @@
                                 <div class="input-field col s3 grey-text text-lighten-1">
                                     <button class="waves-effect waves-light btn-flat orange darken-1 black-text" type="submit"><i class="material-icons left">search</i>Find</button>
                                 </div>
+                                <div class="col s12">
+                                    <span class="new badge orange darken-1 black-text left" data-badge-caption="Surveys total">{{ all_surveys.count }}</span>
+                                    {% if search %}
+                                        <span class="new badge orange darken-1 black-text left" data-badge-caption="filtered found">{{ surveys_found.count }}</span>
+                                    {% endif %}
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -40,7 +46,26 @@
                 {% if search %}
                     <h5>Search results</h5>
                     {% for survey in surveys_found %}
-
+                        <div class="col s12">
+                            <div class="card sticky-action grey darken-4 grey-text text-lighten-1">
+                                <div class="card-content row">
+                                    <span class="card-title grey-text text-lighten-1">
+                                        <b class="orange-text text-darken-1"><i class="material-icons left">trending_up</i>Survey #{{ survey.id }}</b>
+                                    </span><br>
+                                    <span>
+                                        <span class="orange-text text-darken-1 left"><b>Ratings</b></span>
+                                        <span class="new badge orange darken-1 black-text left" data-badge-caption="{{ survey.gameidea }}"><b>Gameidea</b></span>
+                                        <span class="new badge orange darken-1 black-text left" data-badge-caption="{{ survey.gamedesign }}"><b>Gamedesign</b></span>
+                                        <span class="new badge orange darken-1 black-text left" data-badge-caption="{{ survey.gameplay }}"><b>Gameplay</b></span>
+                                        <span class="new badge orange darken-1 black-text left" data-badge-caption="{{ survey.website }}"><b>Website</b></span>
+                                    </span><br><br>
+                                    <p class="grey-text text-lighten-1"><b class="orange-text text-darken-1">Review</b><br>{{ survey.review }}</p><br>
+                                    {% if survey.wishes %}<p class="grey-text text-lighten-1"><b class="orange-text text-darken-1">Wishes</b><br>{{ survey.wishes }}</p><br>{% endif %}
+                                    <span class="orange-text text-darken-1 right"><b class="grey-text text-lighten-1">Posted by</b> {{ survey.name }}</span><br>
+                                    <a class="orange-text text-darken-1 right" href="{% url 'deletesurvey' survey.id %}">{{ survey.timestamp|date:"d.m.Y H:i" }}</a>
+                                </div>
+                            </div>
+                        </div>
                     {% endfor %}
                 {% else %}
                     {% for survey in all_surveys %}
@@ -48,13 +73,15 @@
                             <div class="card sticky-action grey darken-4 grey-text text-lighten-1">
                                 <div class="card-content row">
                                     <span class="card-title grey-text text-lighten-1">
-                                        <b class="orange-text text-darken-1"><i class="material-icons left">trending_up</i>Survey #{{ survey.id }}</b><br>
-                                        <b>Ratings</b>
-                                        Gameidea {{ survey.gameidea }} |
-                                        Gamedesign {{ survey.gamedesign }} |
-                                        Gameplay {{ survey.gameplay }} |
-                                        Website {{ survey.website }}
+                                        <b class="orange-text text-darken-1"><i class="material-icons left">trending_up</i>Survey #{{ survey.id }}</b>
                                     </span><br>
+                                    <span>
+                                        <span class="orange-text text-darken-1 left"><b>Ratings</b></span>
+                                        <span class="new badge orange darken-1 black-text left" data-badge-caption="{{ survey.gameidea }}"><b>Gameidea</b></span>
+                                        <span class="new badge orange darken-1 black-text left" data-badge-caption="{{ survey.gamedesign }}"><b>Gamedesign</b></span>
+                                        <span class="new badge orange darken-1 black-text left" data-badge-caption="{{ survey.gameplay }}"><b>Gameplay</b></span>
+                                        <span class="new badge orange darken-1 black-text left" data-badge-caption="{{ survey.website }}"><b>Website</b></span>
+                                    </span><br><br>
                                     <p class="grey-text text-lighten-1"><b class="orange-text text-darken-1">Review</b><br>{{ survey.review }}</p><br>
                                     {% if survey.wishes %}<p class="grey-text text-lighten-1"><b class="orange-text text-darken-1">Wishes</b><br>{{ survey.wishes }}</p><br>{% endif %}
                                     <span class="orange-text text-darken-1 right"><b class="grey-text text-lighten-1">Posted by</b> {{ survey.name }}</span><br>
