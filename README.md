@@ -22,10 +22,10 @@
 - [ ] Implement Adminuser views
   - [x] View users `@Florian`
   - [x] View Questions `@Florian`
-  - [ ] View Surveys `@Florian`
+  - [x] View Surveys `@Florian`
     - [x] View Survey Entries `@Florian`
-    - [ ] View Survey average ratings `@Florian`
-      - [ ] Diagrams with plotly `@Florian`
+    - [x] View Survey average ratings `@Florian`
+      - [x] Diagrams with matplotlib `@Florian`
     - [ ] View only reviews `@Florian`
     - [ ] View only wishes `@Florian`
   - [ ] Diagrams for Leaderboard Scores & Statistics `@Florian`
@@ -37,6 +37,7 @@
 - pip install djangorestframework
 - pip install Pillow (needed for profile pictures)
 - pip install matplotlib
+- pip install seaborn
 - python -m venv ./venv (creating virtual environment)
 - venv\Scripts\activate
 - python manage.py runserver

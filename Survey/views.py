@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView
+from django.db.models import Avg
 from .forms import SurveyForm, SurveySearchForm, QuestionForm, QuestionSearchForm
 from .models import Survey, Question
 import matplotlib
-
+import seaborn as sns
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import io, base64
@@ -32,11 +33,42 @@ def survey_list(request):
     else:
         all_surveys = Survey.objects.order_by('timestamp')
 
+    # create charts for ratings grouped by category
+    avg_gameidea = Survey.objects.aggregate(Avg('gameidea')).get('gameidea__avg')
+    avg_gamedesign = Survey.objects.aggregate(Avg('gamedesign')).get('gamedesign__avg')
+    avg_gameplay = Survey.objects.aggregate(Avg('gameplay')).get('gameplay__avg')
+    avg_website = Survey.objects.aggregate(Avg('website')).get('website__avg')
+    fig, ax = plt.subplots()
+    labels = ['Gameidea', 'Gamedesign', 'Gameplay', 'Website']
+    ratings = [avg_gameidea, avg_gamedesign, avg_gameplay, avg_website]
+    colors = ['#EF6C00', '#F57C00', '#FB8C00', '#FF9800']
+    ax.barh(labels, ratings, color=colors, zorder=3)
+    sns.despine(left=True, bottom=True)
+    ax.tick_params(axis='x', which='both', bottom=False)
+    ax.tick_params(axis='y', which='both', left=False)
+    ax.xaxis.label.set_color('#BDBDBD')
+    ax.tick_params(colors='#BDBDBD', which='both')
+    ax.set_xlabel('Average rating')
+    fig.suptitle('Average ratings of our work', color='#FB8C00', fontweight='bold')
+    for c in ax.containers:
+        # customize the label to account for cases when there might not be a bar section
+        labels = [f'{w:.2f}' if (w := v.get_width()) > 0.49 else '' for v in c]
+        # set the bar label
+        ax.bar_label(c, labels=labels, label_type='center', color='white', padding=3, fontsize=10)
+    plt.grid(axis='x', which='both', color='#616161', linewidth=1, zorder=0)
+    ax.set_facecolor('#212121')
+    fig.set_facecolor('black')
+    fig.tight_layout()
+    flike = io.BytesIO()
+    fig.savefig(flike)
+    b64 = base64.b64encode(flike.getvalue()).decode()
+
     context = {'all_surveys': all_surveys,
                'surveys_found': surveys_found,
                'search': search,
                'form': searchForm,
                'data': data,
+               'chart': b64,
                }
     return render(request, 'viewsurveys.html', context)
 
@@ -110,11 +142,13 @@ def question_list(request):
     fig, ax = plt.subplots()
     fig.set_facecolor('black')
     ax.pie(sizes, labels=labels, explode=explode, autopct=lambda x: '{:.0f}'.format(x * sum(sizes) / 100),
-           colors=colors, startangle=-270, counterclock=False, pctdistance=0.85, textprops={'color':'#FFFFFF'})
+           colors=colors, startangle=-270, counterclock=False, pctdistance=0.85, textprops={'color':'#FFFFFF'},
+           wedgeprops={'edgecolor':'#000000','linewidth':3})
     centre_circle = plt.Circle((0, 0), 0.70, fc='black')
     fig = plt.gcf()
     fig.gca().add_artist(centre_circle)
     ax.axis('equal')
+    fig.tight_layout()
     flike = io.BytesIO()
     fig.savefig(flike)
     b64 = base64.b64encode(flike.getvalue()).decode()
