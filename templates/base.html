@@ -23,15 +23,8 @@
 <body>
     <main>
         {% block navbar %}
-            <div class="navbar-fixed">
-                <nav>
-                    <div class="nav-wrapper orange darken-1">
-                        <ul id="nav-categories" class="left">
-                            <li><img src="{% static '/images/logo.png' %}" alt="Logo" height="64px"></li>
-                            <li><a class="waves-effect waves-light"><i class="material-icons sidenav-trigger" data-target="sidenav">menu</i></a></li>
-                        </ul>
-                    </div>
-                </nav>
+            <div class="fixed-action-btn fab-top-left">
+                <a data-target="sidenav" class="sidenav-trigger btn-floating btn-large waves-effect waves-light grey darken-4"><i class="material-icons">menu</i></a>
             </div>
             <ul id="sidenav" class="sidenav grey darken-4">
                 <li>

@@ -2,6 +2,14 @@ body {
   background-color: black
 }
 
+.fab-top-left {
+  position: fixed;
+  left: 23px;
+  top: 23px;
+  right: auto;
+  bottom: auto;
+}
+
 input {
   border-bottom: #BDBDBD !important;
   box-shadow: 0 1px 0 0 #BDBDBD !important;
