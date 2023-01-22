@@ -39,9 +39,6 @@
                         </div>
                     </form>
                 </div>
-                <div class="col s4">
-                    <img src='data:image/png;base64,{{ chart }}' height="350px">
-                </div>
             </div>
 
             <div class="container row">
@@ -96,8 +93,11 @@
             </div>
         </div>
     {% else %}
-        <div>
-            <p class="grey-text text-lighten-1">We will discuss your questions at the end of the presentation.</p>
+        <div class="container">
+            <p class="grey-text text-lighten-1">We will discuss the survey at the end of the presentation.</p>
         </div>
     {% endif %}
+    <div class="parallax-container">
+        <div class="parallax"><img src="{% static '/images/Nightsky.png' %}"></div>
+    </div>
 {% endblock %}

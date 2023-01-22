@@ -6,6 +6,7 @@ from .forms import SurveyForm, SurveySearchForm, QuestionForm, QuestionSearchFor
 from .models import Survey, Question
 import matplotlib
 import seaborn as sns
+
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import io, base64
@@ -32,6 +33,25 @@ def survey_list(request):
             surveys_found = Survey.objects.filter(wishes__contains=wishes).order_by('timestamp')
     else:
         all_surveys = Survey.objects.order_by('timestamp')
+
+    context = {'all_surveys': all_surveys,
+               'surveys_found': surveys_found,
+               'search': search,
+               'form': searchForm,
+               'data': data,
+               }
+    return render(request, 'viewsurveys.html', context)
+
+
+def reviews_wishes_list(request):
+    all_surveys = Survey.objects.order_by('timestamp')
+
+    context = {'all_surveys': all_surveys}
+    return render(request, 'viewreviewswishes.html', context)
+
+
+def statistics_diagrams(request):
+    all_surveys = Survey.objects.order_by('timestamp')
 
     # create charts for ratings grouped by category
     avg_gameidea = Survey.objects.aggregate(Avg('gameidea')).get('gameidea__avg')
@@ -61,14 +81,10 @@ def survey_list(request):
     fig.tight_layout()
     flike = io.BytesIO()
     fig.savefig(flike)
-    b64 = base64.b64encode(flike.getvalue()).decode()
+    avg_b64 = base64.b64encode(flike.getvalue()).decode()
 
     context = {'all_surveys': all_surveys,
-               'surveys_found': surveys_found,
-               'search': search,
-               'form': searchForm,
-               'data': data,
-               'chart': b64,
+               'average_ratings_chart': avg_b64,
                }
     return render(request, 'viewsurveys.html', context)
 
@@ -142,8 +158,8 @@ def question_list(request):
     fig, ax = plt.subplots()
     fig.set_facecolor('black')
     ax.pie(sizes, labels=labels, explode=explode, autopct=lambda x: '{:.0f}'.format(x * sum(sizes) / 100),
-           colors=colors, startangle=-270, counterclock=False, pctdistance=0.85, textprops={'color':'#FFFFFF'},
-           wedgeprops={'edgecolor':'#000000','linewidth':3})
+           colors=colors, startangle=-270, counterclock=False, pctdistance=0.85, textprops={'color': '#FFFFFF'},
+           wedgeprops={'edgecolor': '#000000', 'linewidth': 3})
     centre_circle = plt.Circle((0, 0), 0.70, fc='black')
     fig = plt.gcf()
     fig.gca().add_artist(centre_circle)

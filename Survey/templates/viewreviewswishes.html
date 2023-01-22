@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}CapybaraStudios - Reviews and Wishes{% endblock %}
+
+{% block content %}
+    <br><br><br>
+    <div class="container">
+        {% if user.is_authenticated %}
+            <div class="row">
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header orange darken-1 black-text"><i class="material-icons">book</i>Reviews</div>
+                        <div class="collapsible-body">
+                        {% for survey in all_surveys %}
+                            <div class="card grey darken-4">
+                                <div class="card-content">
+                                    <span class="orange-text text-darken-1"><b>{{ survey.name }}</b></span><br>
+                                    <span class="grey-text text-lighten-1">{{ survey.review }}</span><br>
+                                    <span class="orange-text text-darken-1 right">{{ survey.timestamp|date:"d.m.Y H:i" }}</span><br>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header orange darken-3 black-text"><i class="material-icons">chat_bubble</i>Wishes</div>
+                        <div class="collapsible-body">
+                            {% for survey in all_surveys %}
+                                {% if survey.wishes %}
+                                    <div class="card grey darken-4">
+                                        <div class="card-content">
+                                            <span class="orange-text text-darken-1"><b>{{ survey.name }}</b></span><br>
+                                            <span class="grey-text text-lighten-1">{{ survey.wishes }}</span><br>
+                                            <span class="orange-text text-darken-1 right">{{ survey.timestamp|date:"d.m.Y H:i" }}</span><br>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    {% else %}
+        <div class="container">
+            <p class="grey-text text-lighten-1">We will discuss the survey at the end of the presentation.</p>
+        </div>
+    {% endif %}
+    <div class="parallax-container">
+        <div class="parallax"><img src="{% static '/images/Nightsky.png' %}"></div>
+    </div>
+{% endblock %}
