@@ -84,6 +84,13 @@ label.active {
   box-shadow: none !important;
 }
 
+.collection.with-header .collection-header, .collection .collection-item, .collection
+{
+  border: 0px !important;
+  border-bottom: 0px !important;
+  box-shadow: none !important;
+}
+
 .carousel .indicators .indicator-item {
   background-color: #BFBFBF !important;
 }
