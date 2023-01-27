@@ -6,110 +6,398 @@
 {% block content %}
     <div class="container">
         <div class="section black">
-            <div class="row container white-text">
-                <h2 class="header orange-text text-darken-1">Our Team</h2>
-                <table class="highlight col s12 m6 l4">
-                    <tbody>
-                        <tr>
-                            <td class="orange-text text-darken-1"><b>Eric</b></td>
-                            <td>Producer and Developer</td>
-                        </tr>
-                        <tr>
-                            <td class="orange-text text-darken-1"><b>Zainab</b></td>
-                            <td>UI Designer and Projectmanagement</td>
-                        </tr>
-                        <tr>
-                            <td class="orange-text text-darken-1"><b>Florian</b></td>
-                            <td>Sounddesigner and Webdeveloper</td>
-                        </tr>
-                        <tr>
-                            <td class="orange-text text-darken-1"><b>Erdenay</b></td>
-                            <td>Environment- and Mapdesigner</td>
-                        </tr>
-                        <tr>
-                            <td class="orange-text text-darken-1"><b>Deniz</b></td>
-                            <td>Asset Creator</td>
-                        </tr>
-                        <tr>
-                            <td class="orange-text text-darken-1"><b>Felix</b></td>
-                            <td>Developer</td>
-                        </tr>
-                        <tr>
-                            <td class="orange-text text-darken-1"><b>Adrian</b></td>
-                            <td>Developer</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <div class="parallax-container">
-        <div class="parallax"><img src="{% static '/images/Nightsky.png' %}"></div>
-    </div>
+            <h2 class="header orange-text text-darken-1">Our Team</h2>
+            <div class="row">
+                <div class="col s5 card grey darken-4 grey-text text-lighten-1" style="margin: 10px">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img src="{% static '/images/Capybara.png' %}" style="max-width: 100%; height: auto">
+                    </div>
+                    <div class="card-content">
+                        <ul class="collapsible">
+                            <div class="card-title"><b class="orange-text text-darken-1">Eric</b><br>Producer and Developer</div>
+                            <li>
+                                <div class="collapsible-header grey darken-4">Weapon Scripts<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>Grappling Gun</li>
+                                        <li>Particles</li>
+                                        <li>Bullet hit markings</li>
+                                        <li>Damage dealing</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header grey darken-4">Player and Movement<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>Player ragdolls</li>
+                                        <li>Interpolation</li>
+                                        <li>Sliding</li>
+                                        <li>Sneaking / Crouching</li>
+                                        <li>Inputs</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header grey darken-4">Camera<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>Deatheffect</li>
+                                        <li>Zooming</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header grey darken-4">AI development<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>Configs</li>
+                                        <li>States</li>
+                                        <li>Behavior and Sensor</li>
+                                        <li>Shooting</li>
+                                        <li>Stats</li>
+                                        <li>Collect and drop weapon</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header grey darken-4">Multiplayer<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>Relay</li>
+                                        <li>Movement</li>
+                                        <li>Camera</li>
+                                        <li>Player</li>
+                                        <li>Menu</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header grey darken-4">Management<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>Testing and Bugfixing</li>
+                                        <li>Git Management</li>
+                                        <li>Communications</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
-    <div class="section black">
-        <div class="row container">
-            <div class="col s4 grey darken-4 grey-text text-lighten-1">
+                <div class="col s5 card grey darken-4 grey-text text-lighten-1" style="margin: 10px">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img src="{% static '/images/Capybara.png' %}" style="max-width: 100%; height: auto">
+                    </div>
+                    <div class="card-content">
+                        <ul class="collapsible">
+                            <div class="card-title"><b class="orange-text text-darken-1">Adrian</b><br>Developer</div>
+                            <li>
+                                <div class="collapsible-header grey darken-4">Weapon Scripts<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>Inverse Kinematics</li>
+                                        <li>Drop and collect weapon</li>
+                                        <li>Healing station</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header grey darken-4">Player, Movement and AI<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>Hitboxes</li>
+                                        <li>HUD</li>
+                                        <li>Die and respawn</li>
+                                        <li>Tab Menu</li>
+                                        <li>Movement Animations</li>
+                                        <li>AI Respawning</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header grey darken-4">UI and Startscreen<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>Menu</li>
+                                        <li>Adjustable Input</li>
+                                        <li>Basics and Credit scene</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header grey darken-4">Sound scripts<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>Soundmixer</li>
+                                        <li>Sound on objects</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header grey darken-4">Management<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>Testing and Bugfixing</li>
+                                        <li>Git Management</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s5 card grey darken-4 grey-text text-lighten-1" style="margin: 10px">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img src="{% static '/images/Capybara.png' %}" style="max-width: 100%; height: auto">
+                    </div>
+                    <div class="card-content">
+                        <ul class="collapsible">
+                            <div class="card-title"><b class="orange-text text-darken-1">Felix</b><br>Developer</div>
+                            <li>
+                                <div class="collapsible-header grey darken-4">Weapon Scripts<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>System for Hitscan weapons</li>
+                                        <li>Automatic shooting</li>
+                                        <li>Damage dealing</li>
+                                        <li>Reloading</li>
+                                        <li>Collisions</li>
+                                        <li>Multi shot</li>
+                                        <li>Cooldowns</li>
+                                        <li>Hitmarker</li>
+                                        <li>Bullet hit markings</li>
+                                        <li>Particles</li>
+                                        <li>Input</li>
+                                        <li>Balancing</li>
+                                        <li>Rocketlauncher</li>
+                                        <li>Grenade Launcher</li>
+                                        <li>Knockback system</li>
+                                        <li>Ground turret</li>
+                                        <li>Flying turret</li>
+                                        <li>Turrets tracking player</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header grey darken-4">Objects<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>Interactions</li>
+                                        <li>Tooltips</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header grey darken-4">Animations<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>Explosions</li>
+                                        <li>Propeller</li>
+                                        <li>Movable turrets</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header grey darken-4">Player, Camera and Movement<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>HUD</li>
+                                        <li>Control</li>
+                                        <li>Camera Basics</li>
+                                        <li>Movement Basics</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header grey darken-4">Management<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>Testing and Bugfixing</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col s5 card grey darken-4 grey-text text-lighten-1" style="margin: 10px">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img src="{% static '/images/Capybara.png' %}" style="max-width: 100%; height: auto">
+                    </div>
+                    <div class="card-content">
+                        <ul class="collapsible">
+                            <div class="card-title"><b class="orange-text text-darken-1">Deniz</b><br>Asset Creator</div>
+                            <li>
+                                <div class="collapsible-header grey darken-4">Weapon Models<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>Rocketlauncher</li>
+                                        <li>Grappling Gun</li>
+                                        <li>Assault Rifle</li>
+                                        <li>Revolver</li>
+                                        <li>Knife</li>
+                                        <li>Heavy Gun</li>
+                                        <li>Shotgun</li>
+                                        <li>Ground Turret</li>
+                                        <li>Flying Turret</li>
+                                        <li>Healing Station</li>
+                                        <li>Grenade Launcher</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header grey darken-4">Player<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>Model</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header grey darken-4">AI<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>Model</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s5 card grey darken-4 grey-text text-lighten-1" style="margin: 10px">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img src="{% static '/images/Capybara.png' %}" style="max-width: 100%; height: auto">
+                    </div>
+                    <div class="card-content">
+                        <ul class="collapsible">
+                            <div class="card-title"><b class="orange-text text-darken-1">Florian</b><br>Music Production, Sounddesign, Webdeveloper</div>
+                            <li>
+                                <div class="collapsible-header grey darken-4">Music Production (all self produced)<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>Music concept: Music changing on being attacked</li>
+                                        <li>Music production in FL Studio 20/21</li>
+                                        <li>Music for Menu</li>
+                                        <li>Music for Multiplayer</li>
+                                        <li>Music for Space Map Section 1 (base and intense version)</li>
+                                        <li>Music for Space Map Section 2 (base and intense version)</li>
+                                        <li>Music for Space Map End scene</li>
+                                        <li>Music for City Map (base and intense version)</li>
+                                        <li>Music for Space Map End scene</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header grey darken-4">Sound Selection<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>Sounds for all weapons</li>
+                                        <li>Sounds for Game objects</li>
+                                        <li>Sounds for Menu</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header grey darken-4">Map Concepts<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>Map prototypes (digital drafts in stream)</li>
+                                        <li>Warehouse Map creation (support and assistance)</li>
+                                        <li>Asset and Theme selection (support)</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header grey darken-4">Management<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>Jira Management Assistance</li>
+                                        <li>Playtest Testplan</li>
+                                        <li>End presentation concept planning (Website)</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header grey darken-4">Website<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>Technical Design</li>
+                                        <li>Base Implementation in Django</li>
+                                        <li>Blogpost functionality</li>
+                                        <li>Leaderboard functionality</li>
+                                        <li>REST-API for Leaderboard Data</li>
+                                        <li>Questions and Surveys with Backend</li>
+                                        <li>Insights and Statistics using Matplotlib for charts</li>
+                                        <li>Design and Styling with MaterializeCSS</li>
+                                        <li>Admin Interface for management</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col s5 card grey darken-4 grey-text text-lighten-1" style="margin: 10px">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img src="{% static '/images/Capybara.png' %}" style="max-width: 100%; height: auto">
+                    </div>
+                    <div class="card-content">
+                        <ul class="collapsible">
+                            <div class="card-title"><b class="orange-text text-darken-1">Erdenay</b><br>Environment- and Mapdesign</div>
+                            <li>
+                                <div class="collapsible-header grey darken-4">Objects and Scripts<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>Door interaction scripts</li>
+                                        <li>Map bounds scripts</li>
+                                        <li>Button scripts</li>
+                                        <li>End scene animations</li>
+                                        <li>Ingame events</li>
+                                        <li>Gameplay-Story for Maps (find key, escape, etc)</li>
+                                        <li>Scripts for playing weapon sounds</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header grey darken-4">Maps<i class="material-icons left">arrow_drop_down</i></div>
+                                <div class="collapsible-body grey darken-3">
+                                    <ul>
+                                        <li>Warehouse Multiplayer Map implementation</li>
+                                        <li>Space Map implementation</li>
+                                        <li>City Map implementation support</li>
+                                        <li>Platform Multiplayer Map implementation</li>
+                                        <li>Endscenes</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s5 card grey darken-4 grey-text text-lighten-1" style="margin: 10px">
                 <div class="card-image waves-effect waves-block waves-light">
                     <img src="{% static '/images/Capybara.png' %}" style="max-width: 100%; height: auto">
                 </div>
                 <div class="card-content">
                     <ul class="collapsible">
-                        <h6><b class="orange-text text-darken-1">Eric</b> - Producer and Developer</h6>
+                        <div class="card-title"><b class="orange-text text-darken-1">Zainab</b><br>UI Design, Projectmanagement, Mapdesign</div>
                         <li>
-                            <div class="collapsible-header grey darken-4">Weapon Scripts<i class="material-icons left">arrow_drop_down</i></div>
+                            <div class="collapsible-header grey darken-4">UI<i class="material-icons left">arrow_drop_down</i></div>
                             <div class="collapsible-body grey darken-3">
                                 <ul>
-                                    <li>Grappling Gun</li>
-                                    <li>Particles</li>
-                                    <li>Bullet markings</li>
-                                    <li>Damage dealing</li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="collapsible-header grey darken-4">Player and Movement<i class="material-icons left">arrow_drop_down</i></div>
-                            <div class="collapsible-body grey darken-3">
-                                <ul>
-                                    <li>Player ragdolls</li>
-                                    <li>Interpolation</li>
-                                    <li>Sliding</li>
-                                    <li>Sneaking / Crouching</li>
-                                    <li>Inputs</li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="collapsible-header grey darken-4">Camera<i class="material-icons left">arrow_drop_down</i></div>
-                            <div class="collapsible-body grey darken-3">
-                                <ul>
-                                    <li>Deatheffect</li>
-                                    <li>Zooming</li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="collapsible-header grey darken-4">AI development<i class="material-icons left">arrow_drop_down</i></div>
-                            <div class="collapsible-body grey darken-3">
-                                <ul>
-                                    <li>Configs</li>
-                                    <li>States</li>
-                                    <li>Behavior and Sensor</li>
-                                    <li>Shooting</li>
-                                    <li>Stats</li>
-                                    <li>Collect and drop weapon</li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="collapsible-header grey darken-4">Multiplayer<i class="material-icons left">arrow_drop_down</i></div>
-                            <div class="collapsible-body grey darken-3">
-                                <ul>
-                                    <li>Relay</li>
-                                    <li>Movement</li>
-                                    <li>Camera</li>
-                                    <li>Player</li>
                                     <li>Menu</li>
+                                    <li>Basic UI</li>
+                                    <li>UI Art</li>
+                                    <li>UI Animations (didn't work as expected, scrapped)</li>
                                 </ul>
                             </div>
                         </li>
@@ -117,16 +405,37 @@
                             <div class="collapsible-header grey darken-4">Management<i class="material-icons left">arrow_drop_down</i></div>
                             <div class="collapsible-body grey darken-3">
                                 <ul>
-                                    <li>Testing and Bugfixing</li>
-                                    <li>Git Management</li>
-                                    <li>Communications</li>
+                                    <li>Project Management in Jira</li>
+                                    <li>Sprint and Epic Management</li>
+                                    <li>Backlog tracking</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header grey darken-4">Website<i class="material-icons left">arrow_drop_down</i></div>
+                            <div class="collapsible-body grey darken-3">
+                                <ul>
+                                    <li>Content creation support (texts)</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header grey darken-4">Maps<i class="material-icons left">arrow_drop_down</i></div>
+                            <div class="collapsible-body grey darken-3">
+                                <ul>
+                                    <li>City Map Concept</li>
+                                    <li>City Map modeling and Stage design</li>
                                 </ul>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
+            </div>
         </div>
+    </div>
+    <div class="parallax-container">
+        <div class="parallax"><img src="{% static '/images/Nightsky.png' %}"></div>
     </div>
 
 {% endblock %}

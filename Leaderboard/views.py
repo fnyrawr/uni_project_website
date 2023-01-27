@@ -21,7 +21,7 @@ def leaderboard_list(request):
         if data['mapname']:
             mapname = data['mapname']
         playername = data['playername']
-        entries_found = Leaderboard.objects.filter(mapname__contains=mapname).order_by('playtime')
+        entries_found = Leaderboard.objects.filter(mapname__contains=mapname).order_by('-killcount').order_by('-damagedealt').order_by('playtime')
 
         if playername:
             entries_found = entries_found.filter(playername__contains=playername)
@@ -38,7 +38,7 @@ def leaderboard_list(request):
         if data['sortby'] == 'ID':
             entries_found = entries_found.order_by('id')
     else:
-        all_entries = Leaderboard.objects.filter(mapname__contains=mapname).order_by('playtime')
+        all_entries = Leaderboard.objects.filter(mapname__contains=mapname).order_by('-killcount').order_by('-damagedealt').order_by('playtime')
 
     context = {'all_entries': all_entries,
                'entries_found': entries_found,
@@ -71,7 +71,7 @@ class LeaderboardDeleteView(DeleteView):
         mapname = entry.mapname
         entry.delete()
         data = {'mapname': mapname, 'playername': None, 'sortby': None}
-        all_entries = Leaderboard.objects.filter(mapname__contains=mapname).order_by('playtime')
+        all_entries = Leaderboard.objects.filter(mapname__contains=mapname).order_by('-killcount').order_by('-damagedealt').order_by('playtime')
         context = {'all_entries': all_entries,
                    'entries_found': None,
                    'search': False,
