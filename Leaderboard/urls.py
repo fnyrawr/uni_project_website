@@ -10,5 +10,4 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('show/', views.leaderboard_list, name='leaderboard-list'),
     path('delete/<int:pk>/', views.LeaderboardDeleteView.as_view(), name='leaderboard-delete'),
-    path('show/', views.leaderboard_list, name='leaderboard-charts'),
 ]

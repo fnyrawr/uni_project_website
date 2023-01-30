@@ -45,6 +45,15 @@ label.active {
   background-color: #212121  !important;
 }
 
+.select-dropdown li.disabled, .select-dropdown li.disabled > span {
+  color: #BDBDBD !important;
+}
+
+.dropdown-content li:hover, .dropdown-content li.active {
+  background-color: #FB8C00 !important;
+  font-weight: bold;
+}
+
 .dropdown-content li>span.hover {
   background-color: #FB8C00  !important;
 }
