@@ -18,10 +18,11 @@
                                 <select name="mapname" id="mapname">
                                     <optgroup label="Singleplayer" class="grey-text text-lighten-1">
                                         <option value="Space" {% if data.mapname == 'Space' %}selected{% endif %}>Space</option>
-                                        <option value="City" {% if data.mapname == 'City' %}selected{% endif %}>City</option>
+                                        <option value="Arctic" {% if data.mapname == 'Arctic' %}selected{% endif %}>Arctic</option>
                                     </optgroup>
                                     <optgroup label="Multiplayer">
                                         <option value="Warehouse" {% if data.mapname == 'Warehouse' %}selected{% endif %}>Warehouse</option>
+                                        <option value="Arcade" {% if data.mapname == 'Arcade' %}selected{% endif %}>Arcade</option>
                                     </optgroup>
                                 </select>
                                 <label>Map</label>
