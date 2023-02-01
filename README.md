@@ -28,9 +28,7 @@
       - [x] Diagrams with matplotlib `@Florian`
     - [x] View only reviews `@Florian`
     - [x] View only wishes `@Florian`
-- [ ] Diagrams for Leaderboard Scores & Statistics `@Florian`
-- [ ] Fill page with contents `@Florian (Design and Page)` `@Zainab (Text, supporting)`
-- [ ] Test website functionalities `@everyone`
+- [x] Fill page with contents `@Florian`
 
 ##### Needed commands to get page running
 - pip install django
