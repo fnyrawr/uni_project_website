@@ -1,10 +1,93 @@
 {% extends "base.html" %}
 
-{% block title %}CapybaraStudios - Development{% endblock %}
+{% block title %}CapybaraStudios - Development Process{% endblock %}
 {% load static %}
 
 {% block content %}
-    <div class="container">
-
+    <div class="section black">
+        <div class="row container">
+            <h2 class="header orange-text text-darken-1">Introduction / Finding our idea</h2>
+            <p class="grey-text text-lighten-1 flow-text">At the beginning we were collecting ideas about possible projects that can be done. We thought about an AI project, later we also considered making a REST-Server application. In the end we decided on game development since most team members voted for that idea. Our team mainly consists of 2 groups of people who have been working together on projects before (with one exception). So the most of us knew each other already before this project.</p>
+        </div>
+    </div>
+    <div class="parallax-container">
+        <div class="parallax"><img src="{% static '/images/Nightsky.png' %}"></div>
+    </div>
+    <div class="section black">
+        <div class="row container">
+            <h2 class="header orange-text text-darken-1">Organization Process</h2>
+            <p class="grey-text text-lighten-1 flow-text">We divided our workload in sprints of 1 to 2 weeks. At the beginning of a sprint each member decided about the own workload, planned goals, etc. We entered that data as Tasks and ToDos into Jira and sorted it into Epics (containers). We also entered that data into a Markdown file located in the repo to have a ToDo-List. Aside from that we used Discord for communication. We divided our dedicated Discord Server into thematic grouped channels for better organization.</p>
+        </div>
+    </div>
+    <div class="parallax-container">
+        <div class="parallax"><img src="{% static '/images/Nightsky.png' %}"></div>
+    </div>
+    <div class="section black">
+        <div class="row container grey-text text-lighten-1">
+            <h2 class="header orange-text text-darken-1">Game mechanics and features</h2>
+            <table class="highlight col s12 m6 l4">
+                <tbody>
+                    <tr>
+                        <td>Singleplayer and Multiplayer gamemodes</td>
+                    </tr>
+                    <tr>
+                        <td>Player movement and animations</td>
+                    </tr>
+                    <tr>
+                        <td>Time trials with Leaderboard on this website</td>
+                    </tr>
+                    <tr>
+                        <td>More than 10 available weapons</td>
+                    </tr>
+                    <tr>
+                        <td>2 Singleplayer and 2 Multiplayer maps</td>
+                    </tr>
+                    <tr>
+                        <td>AI enemies with different behaviors</td>
+                    </tr>
+                    <tr>
+                        <td>Ground turrets and flying turrets</td>
+                    </tr>
+                    <tr>
+                        <td>Interaction objects on the map</td>
+                    </tr>
+                    <tr>
+                        <td>Many kinds of physics</td>
+                    </tr>
+                    <tr>
+                        <td>Menus and Settings</td>
+                    </tr>
+                    <tr>
+                        <td>Lobby system for multiplayer</td>
+                    </tr>
+                    <tr>
+                        <td>Different multiplayer gamemodes</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="parallax-container">
+        <div class="parallax"><img src="{% static '/images/Nightsky.png' %}"></div>
+    </div>
+    <div class="section black">
+        <div class="row container">
+            <h2 class="header orange-text text-darken-1">Learnings</h2>
+            <p class="grey-text text-lighten-1 flow-text">Since we organized our working processes in a good way, we always knew what the current issues were and who worked on that. Since we used Discord for a quick communication questions could be answered quickly. When a team member was not feeling comfortable with the assigned work we tried to find solutions to that aswell. For example one of our members was not really comfortable with the usage of Unity so we extended our portfolio to new topics like for example the website. Some of the work done was delivered by one team member and implemented to the game by someone else. For example assets and models or music and sounds. Not all of that was pushed directly into the repository (to prevent merge conflicts in Git and to easily make changes if requested without pingponging those files over Git) so some team members have lower commit counts due to that.<br>
+            We had regular issues with Git due to broken and overwritten files in the repository. Since Git sometimes showed no merge conflicts and performed fast forward merges we assumed there were no issues. But playtesting it revealed that scripts actually were overwritten with older versions even without touching them. That lead us having to invest lots of time for fixing those issues. The biggest problem was that we never knew if a file got overwritten by accident because Git didn't make it obvious for us.<br>
+            Since we entered new ground with experiences, new APIs and Tools we learned a lot in this project.</p>
+        </div>
+    </div>
+    <div class="parallax-container">
+        <div class="parallax"><img src="{% static '/images/Nightsky.png' %}"></div>
+    </div>
+    <div class="section black">
+        <div class="row container">
+            <h2 class="header orange-text text-darken-1">Future development</h2>
+            <p class="grey-text text-lighten-1 flow-text">Our game is basically done and ready to use, having different mechanics and gamemodes. We could increase the range of available weapons, gamemodes and maps to make the game even more fun to play. We also could possibly increase the graphics and animations. The multiplayer could also be extended in a range of new features and be run over a central server instead of peer to peer to prevent players losing connection if the host leaves the lobby.</p>
+        </div>
+    </div>
+    <div class="parallax-container">
+        <div class="parallax"><img src="{% static '/images/Nightsky.png' %}"></div>
     </div>
 {% endblock %}

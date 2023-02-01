@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}CapybaraStudios - About{% endblock %}
+{% block title %}CapybaraStudios - About Project Iron Slug{% endblock %}
 {% load static %}
 
 {% block content %}
@@ -16,8 +16,8 @@
 
     <div class="section black">
         <div class="row container">
-            <h2 class="header orange-text text-darken-1">About our Game</h2>
-            <p class="grey-text text-lighten-1">We implemented a First-Person 3D-Shooter game in Unity. It includes some singleplayer missions where players have to fight their way through different maps against AI enemies and turrets. It also includes a multiplayer game mode.<br>
+            <h2 class="header orange-text text-darken-1">About our Game Iron Slug</h2>
+            <p class="grey-text text-lighten-1 flow-text">We implemented a First-Person 3D-Shooter game in Unity. It includes some singleplayer missions where players have to fight their way through different maps against AI enemies and turrets. It also includes a multiplayer game mode.<br>
             The game should be about having a fun time playing alone or against your friends. You can also submit your scores ingame and view the Leaderboard on our page.</p>
         </div>
     </div>
@@ -27,12 +27,12 @@
     <div class="section black">
         <div class="row container">
             <h2 class="header orange-text text-darken-1">Gamemodes and Maps</h2>
-            <p class="grey-text text-lighten-1">Our Game features Singleplayer aswell as Multiplayer modes. In Singleplayer you fight your way through the map against bots fulfilling an objective. There is a leaderboard where you might end up seeing your score if you prove to be good enough. In Multiplayer you can play online with your friends.</p>
+            <p class="grey-text text-lighten-1 flow-text">Our Game features Singleplayer aswell as Multiplayer modes. In Singleplayer you fight your way through the map against bots fulfilling an objective. There is a leaderboard where you might end up seeing your score if you prove to be good enough. In Multiplayer you can play online with your friends.</p>
             <ul class="collapsible popout">
                 <li>
                     <div class="collapsible-header orange"><i class="material-icons">person</i><span><b>Singleplayer</b> Space</span></div>
                     <div class="collapsible-body grey darken-4 grey-text text-lighten-1">
-                        <span>Fight your way through space. Enter the space base, fight your way through the graveyard and get back to earth ASAP.</span>
+                        <p class="flow-text">Fight your way through space. Enter the space base, fight your way through the graveyard and get back to earth ASAP.</p>
                         <div class="row">
                             <div class="col s3 m3">
                                 <img class="materialboxed" src="{% static '/images/screenshots/space1.png' %}" width="100%">
@@ -52,7 +52,7 @@
                 <li>
                     <div class="collapsible-header orange darken-2"><i class="material-icons">person</i><span><b>Singleplayer</b> Arctic</span></div>
                     <div class="collapsible-body grey darken-4 grey-text text-lighten-1">
-                        <span>Fight your way through the mountains and through the city. Try to get away from this lost place.</span>
+                        <p class="flow-text">Fight your way through the mountains and through the city. Try to get away from this lost place.</p>
                         <div class="row">
                             <div class="col s3 m3">
                                 <img class="materialboxed" src="{% static '/images/screenshots/arctic1.png' %}" width="100%">
@@ -72,7 +72,7 @@
                 <li>
                     <div class="collapsible-header orange darken-3"><i class="material-icons">group</i><span><b>Multiplayer</b> Warehouse</span></div>
                     <div class="collapsible-body grey darken-4 grey-text text-lighten-1">
-                        <span>Play online with your friends in this chaotic but interesting looking warehouse.</span>
+                        <p class="flow-text">Play online with your friends in this chaotic but interesting looking warehouse.</p>
                         <div class="row">
                             <div class="col s3 m3">
                                 <img class="materialboxed" src="{% static '/images/screenshots/warehouse1.png' %}" width="100%">
@@ -92,7 +92,7 @@
                 <li>
                     <div class="collapsible-header orange darken-4"><i class="material-icons">group</i><span><b>Multiplayer</b> Arcade</span></div>
                     <div class="collapsible-body grey darken-4 grey-text text-lighten-1">
-                        <span>Play online with your friends and try to not fall off the platform.</span>
+                        <p class="flow-text">Play online with your friends and try to not fall off the platform.</p>
                         <div class="row">
                             <div class="col s3 m3">
                                 <img class="materialboxed" src="{% static '/images/screenshots/arcade1.png' %}" width="100%">
@@ -112,7 +112,7 @@
     <div class="section black">
         <div class="row container">
             <h2 class="header orange-text text-darken-1">Weapons</h2>
-            <p class="grey-text text-lighten-1">Im our game you can find different kinds of weapons for many usecases and playstyles. Check out what we've got for you.</p>
+            <p class="grey-text text-lighten-1 flow-text">Im our game you can find different kinds of weapons for many usecases and playstyles. Check out what we've got for you.</p>
         </div>
 
         <div class="carousel">
@@ -188,12 +188,14 @@
             <div class="left-align">
                 <h3 class="orange-text">Aim and Shoot</h3>
                 <h5>When holding a weapon you can use the right mouse button to aim a target and shoot with the left mouse button.</h5>
+                <h5>You may need to reload. You can do this by pressing the R key.</h5>
             </div>
         </div>
         <div class="carousel-item middle-indicator grey-text text-lighten-1">
             <div class="left-align">
                 <h3 class="orange-text">Interaction with objects</h3>
                 <h5>Use E to interact with objects. You can open doors, pick up weapons and more.</h5>
+                <h5>Switch weapons with Num Keys.</h5>
             </div>
         </div>
     </div>
@@ -229,6 +231,14 @@
                     <tr>
                         <td class="orange-text text-darken-1"><b>Shoot</b></td>
                         <td>Left Mouse Button</td>
+                    </tr>
+                    <tr>
+                        <td class="orange-text text-darken-1"><b>Reload</b></td>
+                        <td>R</td>
+                    </tr>
+                    <tr>
+                        <td class="orange-text text-darken-1"><b>Switch Weapon</b></td>
+                        <td>Num Keys</td>
                     </tr>
                     <tr>
                         <td class="orange-text text-darken-1"><b>Interact</b></td>
